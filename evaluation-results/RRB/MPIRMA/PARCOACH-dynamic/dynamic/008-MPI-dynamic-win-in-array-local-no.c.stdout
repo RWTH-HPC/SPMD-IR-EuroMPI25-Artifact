@@ -1,0 +1,13 @@
+Process 1 finished. Sums: sum0 = 9900, sum1 = 0
+Process 0 finished. Sums: sum0 = 4950, sum1 = 7450
+[n23m0165:1086913] *** Process received signal ***
+[n23m0165:1086913] Signal: Segmentation fault (11)
+[n23m0165:1086913] Signal code: Address not mapped (1)
+[n23m0165:1086913] Failing at address: 0x1518464e4420
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun noticed that process rank 1 with PID 0 on node n23m0165 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------

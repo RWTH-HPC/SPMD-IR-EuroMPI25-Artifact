@@ -1,0 +1,5 @@
+value is 1
+Process 1: Execution finished, variable contents: value = 1, value2 = 2, win_base[0] = 1
+PARCOACH: stopping RMA analyzer, no issues found.
+Process 0: Execution finished, variable contents: value = 1, value2 = 2, win_base[0] = 0
+PARCOACH: stopping RMA analyzer, no issues found.

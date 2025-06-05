@@ -1,0 +1,28 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.BzhFwaN7CL"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+[0000] ERROR: collectives_c.c:943: pshmem_int_sum_reduce
+[0000]        Argument "dest" is not symmetric (0x7ffdde2f7fb0)
+Sandia OpenSHMEM exited in error
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 0 in communicator MPI COMMUNICATOR 11 DUP FROM 5
+with errorcode 1.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+rank 1 (of 2), pid 1156666 caught signal nr 15
+rank -1 (of -1), pid 1156668 caught signal nr 15
+[0001] ERROR: collectives_c.c:943: pshmem_int_sum_reduce
+[0001]        Argument "dest" is not symmetric (0x7ffd394989c0)
+Sandia OpenSHMEM exited in error
+[n23m0165.hpc.itc.rwth-aachen.de:1156619] 3 more processes have sent help message help-mpi-api.txt / mpi-abort
+[n23m0165.hpc.itc.rwth-aachen.de:1156619] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[MUST] Execution finished.

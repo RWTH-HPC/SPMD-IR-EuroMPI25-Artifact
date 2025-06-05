@@ -1,0 +1,7 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.W7MiTAiVYL"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0" is present and used.
+[MUST-ERROR] Missing program to execute (parameter COMMAND, see '/opt/rmasanitizer/bin/mustrun --help' for more information)

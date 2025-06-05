@@ -1,0 +1,4 @@
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/RRB/NVSHMEM-gpuInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:94:18: error: use of undeclared identifier 'flag_d'
+   94 |     nvshmem_free(flag_d);
+      |                  ^
+1 error generated when compiling for sm_89.

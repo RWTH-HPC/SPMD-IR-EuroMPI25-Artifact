@@ -1,0 +1,49 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.57fnJ0ftln"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+rank 0 (of 2), pid 2620526 caught MPI error nr 47
+MPI_ERR_RMA_SYNC: error executing rma sync
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/RMASanitizer-NoOpt/RMA/Correct-lockunlock-get_rput-001.c.exe-must(backtrace+0xda)[0x55b6e69f4c9a]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(+0xe338)[0x7f5e5da5e338]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(+0xfb4a)[0x7f5e5da5fb4a]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(+0xfa28)[0x7f5e5da5fa28]
+/lib/x86_64-linux-gnu/libmpi.so.40(ompi_errhandler_invoke+0x93)[0x7f5e5f8cbf93]
+/lib/x86_64-linux-gnu/libmpi.so.40(PMPI_Rput+0x98)[0x7f5e5f918138]
+/opt/rmasanitizer/modules//libMpiHandleShim.so(MPI_Rput+0x21)[0x7f5e5c916dc1]
+/opt/rmasanitizer/lib/libpnmpi.so(NQJ_Rput+0x17f)[0x7f5e5ff6954f]
+/opt/rmasanitizer/lib/libpnmpi.so(XMPI_Rput+0x61)[0x7f5e5ff92761]
+/opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0/modules//libweaver-wrapp-gen-output-0.so(MPI_Rput+0x397)[0x7f5e5b6d54b7]
+/opt/rmasanitizer/lib/libpnmpi.so(NQJ_Rput+0x17f)[0x7f5e5ff6954f]
+/opt/rmasanitizer/lib/libpnmpi.so(MPI_Rput+0x15f)[0x7f5e5ff85b2f]
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/RMASanitizer-NoOpt/RMA/Correct-lockunlock-get_rput-001.c.exe-must(+0xd53ed)[0x55b6e6a593ed]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2724a)[0x7f5e5f58c24a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85)[0x7f5e5f58c305]
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/RMASanitizer-NoOpt/RMA/Correct-lockunlock-get_rput-001.c.exe-must(+0x21421)[0x55b6e69a5421]
+Waiting up to 30 seconds for analyses to be finished.
+[MUST-REPORT] Error: from: call MPI_Win_lock@0: The provided lock type (1) for MPI_Win_lock is invalid.
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 1 in communicator MPI COMMUNICATOR 5 SPLIT FROM 3
+with errorcode 143.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+rank -1 (of -1), pid 2620528 caught signal nr 15
+rank 1 (of 2), pid 2620527 caught signal nr 15
+--------------------------------------------------------------------------
+mpiexec noticed that process rank 0 with PID 0 on node n23m0165 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[n23m0165.hpc.itc.rwth-aachen.de:2620521] 1 more process has sent help message help-mpi-api.txt / mpi-abort
+[n23m0165.hpc.itc.rwth-aachen.de:2620521] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[MUST] Execution finished.

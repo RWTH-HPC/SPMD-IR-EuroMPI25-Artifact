@@ -1,0 +1,36 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  %43 = load ptr, ptr %9, align 8, !dbg !104 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 1, ptr noundef @ompi_mpi_float, i32 noundef 1, i64 noundef 0, i32 noundef 1, ptr noundef @ompi_mpi_float, ptr noundef %47), !dbg !108 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %47 = load ptr, ptr %8, align 8, !dbg !107 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 1, ptr noundef @ompi_mpi_float, i32 noundef 1, i64 noundef 0, i32 noundef 1, ptr noundef @ompi_mpi_float, ptr noundef %47), !dbg !108 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 1, ptr noundef @ompi_mpi_float, i32 noundef 1, i64 noundef 0, i32 noundef 1, ptr noundef @ompi_mpi_float, ptr noundef %47), !dbg !108 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 1, ptr noundef @ompi_mpi_float, i32 noundef 1, i64 noundef 0, i32 noundef 1, ptr noundef @ompi_mpi_float, ptr noundef %47), !dbg !108 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+LocalConcurrency detected: conflit with the following instructions: 
+  store float 3.000000e+00, ptr %54, align 4, !dbg !115 - LINE 43 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 1, ptr noundef @ompi_mpi_float, i32 noundef 1, i64 noundef 0, i32 noundef 1, ptr noundef @ompi_mpi_float, ptr noundef %47), !dbg !108 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %56 = load ptr, ptr %8, align 8, !dbg !117 - LINE 46 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 1, ptr noundef @ompi_mpi_float, i32 noundef 1, i64 noundef 0, i32 noundef 1, ptr noundef @ompi_mpi_float, ptr noundef %47), !dbg !108 - LINE 42 in cq-results-20250604-173113/RRB/MPIRMA/PARCOACH-static/static/038-MPI-static-loop-array-bounds-local-no.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+10 MPI functions including 4 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 1 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 1 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/19) LOAD and 0 (/12) STORE are instrumented
+===========================

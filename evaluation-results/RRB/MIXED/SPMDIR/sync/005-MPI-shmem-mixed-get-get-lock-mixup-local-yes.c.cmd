@@ -1,0 +1,1 @@
+apptainer run --cleanenv /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/util/apptainer/spmdir.sif spmd-verify check-dataRace emitSPMDIR /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/RRB/MIXED/SPMDIR/sync/005-MPI-shmem-mixed-get-get-lock-mixup-local-yes.c

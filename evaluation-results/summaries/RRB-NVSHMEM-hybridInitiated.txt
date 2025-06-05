@@ -1,0 +1,31 @@
+                                                       discipline SPMDIR
+001-nvshmem-conflict-putnbi-load-local-no.cu             conflict     TN
+002-nvshmem-conflict-putnbi-store-local-yes.cu           conflict     TP
+003-nvshmem-conflict-putnbi-putnbi-local-no.cu           conflict     TN
+004-nvshmem-conflict-getnbi-load-local-yes.cu            conflict     TP
+005-nvshmem-conflict-getnbi-store-local-yes.cu           conflict     TP
+006-nvshmem-conflict-getnbi-putnbi-local-yes.cu          conflict     TP
+007-nvshmem-conflict-getnbi-getnbi-local-yes.cu          conflict     TP
+008-nvshmem-conflict-put_signal_nbi-store-local-yes.cu   conflict     TP
+009-nvshmem-conflict-put_signal_nbi-load-local-no.cu     conflict     TN
+001-nvshmem-sync-barrierall-local-yes.cu                     sync     TP
+002-nvshmem-sync-barrierall-local-no.cu                      sync     TN
+003-nvshmem-sync-quiet-local-yes.cu                          sync     TP
+004-nvshmem-sync-quiet-local-no.cu                           sync     TN
+005-nvshmem-sync-waituntil-local-no.cu                       sync     FP
+006-nvshmem-sync-waituntil-local-yes.cu                      sync     TP
+
+         SPMDIR                              
+             TP TN FP FN TO CR    P    R    A
+conflict      6  3  0  0  0  0 1.00 1.00 1.00
+sync          3  2  1  0  0  0 0.75 1.00 0.83
+total         9  5  1  0  0  0 0.90 1.00 0.93
+=== conflict ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   6   3   0   0   0   0 1.00 1.00 1.00
+=== sync ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   3   2   1   0   0   0 0.75 1.00 0.83
+=== Total ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   9   5   1   0   0   0 0.90 1.00 0.93

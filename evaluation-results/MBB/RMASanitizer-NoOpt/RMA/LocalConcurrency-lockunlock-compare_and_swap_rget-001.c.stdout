@@ -1,0 +1,23 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.mPVbp6sdzT"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/62e34d58af4ca21280d2ad571c95c2b0" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+[MUST-RUNTIME] Could not find location for vector clock value 0
+[MUST-RUNTIME] Could not find location for vector clock value 0
+[MUST-RUNTIME] Could not find location for vector clock value 0
+[MUST-REPORT] Error: from: call @0: Local buffer data race at rank 0 between a write of size 8 at  References of a representative process:
+[MUST-REPORT] Reference 1: call MPI_Rgetmain
+[MUST-REPORT] /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/RMASanitizer-NoOpt/RMA/LocalConcurrency-lockunlock-compare_and_swap_rget-001.c:53
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST-REPORT] Reference 2: call MPI_Compare_and_swapmain
+[MUST-REPORT] /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/RMASanitizer-NoOpt/RMA/LocalConcurrency-lockunlock-compare_and_swap_rget-001.c:51
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST-REPORT] Error: from: call MPI_Win_lock@0: The provided lock type (1) for MPI_Win_lock is invalid.
+Rank 0 finished normally
+Rank 1 finished normally
+[MUST] Execution finished.

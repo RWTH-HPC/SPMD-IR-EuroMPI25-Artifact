@@ -1,0 +1,16 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+13 MPI functions including 6 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 1 MPI_Lock, 0 MPI_Lockall 1 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 1 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 1 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 8 (/18) LOAD and 1 (/10) STORE are instrumented
+===========================

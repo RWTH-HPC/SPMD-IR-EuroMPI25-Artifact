@@ -1,0 +1,6 @@
+[n23m0165:1090246] *** An error occurred in MPI_Recv
+[n23m0165:1090246] *** reported by process [3059548161,1]
+[n23m0165:1090246] *** on communicator MPI_COMM_WORLD
+[n23m0165:1090246] *** MPI_ERR_TRUNCATE: message truncated
+[n23m0165:1090246] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[n23m0165:1090246] ***    and potentially your MPI job)
