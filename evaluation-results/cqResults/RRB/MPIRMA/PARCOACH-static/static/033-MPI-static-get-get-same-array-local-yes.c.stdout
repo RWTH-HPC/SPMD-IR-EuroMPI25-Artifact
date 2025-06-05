@@ -1,0 +1,32 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  %50 = load i32, ptr %8, align 4, !dbg !107 - LINE 42 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 2, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 1, i32 noundef 1275069445, i32 noundef %47), !dbg !105 - LINE 40 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %51 = call i32 @MPI_Get(ptr noundef %49, i32 noundef 1, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 1, i32 noundef 1275069445, i32 noundef %50), !dbg !108 - LINE 42 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 2, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 1, i32 noundef 1275069445, i32 noundef %47), !dbg !105 - LINE 40 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %53 = load i32, ptr %8, align 4, !dbg !110 - LINE 44 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+AND
+  %51 = call i32 @MPI_Get(ptr noundef %49, i32 noundef 1, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 1, i32 noundef 1275069445, i32 noundef %50), !dbg !108 - LINE 42 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %53 = load i32, ptr %8, align 4, !dbg !110 - LINE 44 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+AND
+  %48 = call i32 @MPI_Get(ptr noundef %46, i32 noundef 2, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 1, i32 noundef 1275069445, i32 noundef %47), !dbg !105 - LINE 40 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/static/033-MPI-static-get-get-same-array-local-yes.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+12 MPI functions including 6 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 2 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 2 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 14 (/20) LOAD and 1 (/9) STORE are instrumented
+===========================

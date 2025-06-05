@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/027-MPI-static-mult-win-fence-local-yes.c:44:9: warning: get operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        MPI_Get(arr1, packet_size, MPI_INT, 1, packet_size, packet_size, MPI_INT, win0);
+        ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/027-MPI-static-mult-win-fence-local-yes.c:44:9: note: see current operation: %error_8 = "spmd.get"(%baseAddress_2, %c50_i64, %3, %c1_i64, %c1_i32, %win, %c50_i64, %c50_i64, %3, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/027-MPI-static-mult-win-fence-local-yes.c:41:9: warning: get operation/call
+        MPI_Get(arr1, packet_size, MPI_INT, 1, 0, packet_size, MPI_INT, win0);
+        ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/027-MPI-static-mult-win-fence-local-yes.c:41:9: note: see current operation: %error_7 = "spmd.get"(%baseAddress_2, %c50_i64, %3, %c1_i64, %c1_i32, %win, %c0_i64, %c50_i64, %3, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %baseAddress_2
+Previous Access on: %baseAddress_2
+
+
+On the orignal value:
+Operand: %baseAddress_2
+
+
+Defined by:
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/027-MPI-static-mult-win-fence-local-yes.c:29:5: warning: winAlloc
+    MPI_Win_allocate(ARR_SIZE * sizeof(int), sizeof(int), MPI_INFO_NULL, MPI_COMM_WORLD, &arr1, &win1);
+    ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/027-MPI-static-mult-win-fence-local-yes.c:29:5: note: see current operation: %baseAddress_2, %win_3, %error_4 = "spmd.winAlloc"(%2, %c400_i64, %c4_i32) <{usedModel = 0 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64, i32) -> (!llvm.ptr, !spmd.win, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

@@ -1,0 +1,27 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.SuWwm87bbw"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+PE 0: localbuf = 0, remote = 0, 
+PE 1: localbuf = 1, remote = 0, 
+Process 0: Execution finished, variable contents: remote = 0, localbuf = 0
+Process 1: Execution finished, variable contents: remote = 0, localbuf = 1
+[MUST-REPORT] Error: from: call @0: Local buffer data race at rank 0 between a write of size 4 at shmem_int_get_nbi@1 and a previous write of size 4 at shmem_int_get_nbi@2. References of a representative process:
+[MUST-REPORT] Reference 1: call shmem_int_get_nbimain
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/SHMEM/RMASanitizer-NoOpt/conflict/007-shmem-conflict-getnbi-getnbi-local-yes.c:31
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST-REPORT] Reference 2: call shmem_int_get_nbimain
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/SHMEM/RMASanitizer-NoOpt/conflict/007-shmem-conflict-getnbi-getnbi-local-yes.c:29
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST-REPORT] Information: from: call MPI_Finalize@0: The following MPI functions were used but are not supported by MUST: 
+[MUST-REPORT] shmem_int_get_nbi
+[MUST-REPORT]  References of a representative process:
+[MUST-REPORT] Reference 1: call shmem_int_get_nbimain
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/SHMEM/RMASanitizer-NoOpt/conflict/007-shmem-conflict-getnbi-getnbi-local-yes.c:29
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST] Execution finished.

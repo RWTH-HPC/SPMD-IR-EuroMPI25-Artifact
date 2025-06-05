@@ -1,0 +1,40 @@
+[n23m0302:979724:0:980029]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:979723:1:979723]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:979723:0:980028]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970025.814672] [n23m0302:979723:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970025.814671] [n23m0302:979723:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+==== backtrace (tid: 979723) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x147e47ba1e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x147e47b9fb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x147e47b9fbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x147e47c22038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_flush_local_all+0x81a) [0x147e4850a54a]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-rget_rget-001.c-instrumented.exe(+0x13e2) [0x5602fe6c23e2]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x147e4808224a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x147e48082305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-rget_rget-001.c-instrumented.exe(+0x1151) [0x5602fe6c2151]
+=================================
+==== backtrace (tid: 980029) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x147a897fbe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x147a897f9b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x147a897f9bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x147a8987c008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x147a8a252596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x147a8a252880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x147a8a13237a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x147a8c7b5702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x147a89b6f4a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x147a89d3e1f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x147a89dbe89c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 979723 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

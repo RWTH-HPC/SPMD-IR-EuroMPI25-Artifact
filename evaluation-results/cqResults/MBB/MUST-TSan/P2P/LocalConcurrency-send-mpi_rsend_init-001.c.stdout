@@ -1,0 +1,34 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.v971aNIqPc"!
+[MUST] Using prebuilt infrastructure at /home/ss540294/.cache/must/prebuilds/c91df6f1166ba5fb6b812f137acecbe9
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/home/ss540294/.cache/must/prebuilds/c91df6f1166ba5fb6b812f137acecbe9" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 or later.
+[MUST] Executing application:
+==================
+WARNING: ThreadSanitizer: data race (pid=2371236)
+  Write of size 4 at 0x7b0c00045788 by main thread:
+    #0 main /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_rsend_init-001.c:46:31 (LocalConcurrency-send-mpi_rsend_init-001.c.exe-must+0xd4f3d) (BuildId: 851dca8c135291ac6e569a27651d940a309c1095)
+
+  Previous read of size 8 at 0x7b0c00045788 by thread T3:
+    #0 MPI_Rsend_init <null> (libpnmpi.so+0xc75d0) (BuildId: 51e6a28daac14f6fff662ec0bb3e35824d912af2)
+    #1 main /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_rsend_init-001.c:43:24 (LocalConcurrency-send-mpi_rsend_init-001.c.exe-must+0xd4f23) (BuildId: 851dca8c135291ac6e569a27651d940a309c1095)
+
+  Location is heap block of size 40 at 0x7b0c00045780 allocated by main thread:
+    #0 calloc <null> (LocalConcurrency-send-mpi_rsend_init-001.c.exe-must+0x4ccb6) (BuildId: 851dca8c135291ac6e569a27651d940a309c1095)
+    #1 main /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_rsend_init-001.c:34:21 (LocalConcurrency-send-mpi_rsend_init-001.c.exe-must+0xd4e87) (BuildId: 851dca8c135291ac6e569a27651d940a309c1095)
+
+  Thread T3 'Request from call MPI_Rsend_init' (tid=0, running) created by main thread at:
+    #0 must::MpiTSanAnnotations::makeBlocksActive(unsigned long, unsigned long, must::MustMemIntervalListType const&, long) <null> (libmpiTSanAnnotations.so+0x1716a) (BuildId: 750849a61e36cec9b3a95b9dfa97cf526ff33886)
+    #1 MPI_Rsend_init <null> (libpnmpi.so+0xc75d0) (BuildId: 51e6a28daac14f6fff662ec0bb3e35824d912af2)
+    #2 main /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_rsend_init-001.c:43:24 (LocalConcurrency-send-mpi_rsend_init-001.c.exe-must+0xd4f23) (BuildId: 851dca8c135291ac6e569a27651d940a309c1095)
+
+SUMMARY: ThreadSanitizer: data race /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_rsend_init-001.c:46:31 in main
+==================
+[MUST-REPORT] MUST detected no MPI usage errors nor any suspicious behavior during this application run.
+Rank 0 finished normally
+Rank 1 finished normally
+ThreadSanitizer: reported 1 warnings
+[MUST] Execution finished.

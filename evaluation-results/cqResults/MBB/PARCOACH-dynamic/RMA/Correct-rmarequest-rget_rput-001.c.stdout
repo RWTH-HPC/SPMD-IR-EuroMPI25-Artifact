@@ -1,0 +1,52 @@
+[n23m0302:1042297:0:1042297]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1042297:1:1042535]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1042296:0:1042296]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1042296:1:1042536]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753970069.594093] [n23m0302:1042296:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753970069.594094] [n23m0302:1042296:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid:1042296) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1529e4dc5e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1529e4dc3b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1529e4dc3bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x1529e4e46008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x1529e581b4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x1529e581ef5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x29720e) [0x1529e581f20e]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Wait+0x21e) [0x1529e56fddde]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_rput-001.c-instrumented.exe(+0x13ce) [0x55657d4f73ce]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1529e52a624a]
+10  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1529e52a6305]
+11  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_rput-001.c-instrumented.exe(+0x1151) [0x55657d4f7151]
+=================================
+==== backtrace (tid:1042297) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14ea20112e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14ea20110b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14ea20110bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14ea20193038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14ea20b684eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14ea20b6bf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14ea20b34c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14ea20b35146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14ea20aaca2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14ea20b235d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14ea20b237ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14ea20b24181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14ea209cd0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14ea230ccc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14ea230cf8ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_rput-001.c-instrumented.exe(+0x146f) [0x557327d0146f]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14ea205f324a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14ea205f3305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_rput-001.c-instrumented.exe(+0x1151) [0x557327d01151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1042297 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

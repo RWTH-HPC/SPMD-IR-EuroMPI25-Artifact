@@ -1,0 +1,23 @@
+[n23m0302:902056:0:902385]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid: 902385) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x151720f63e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x151720f61b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x151720f61bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x151720fe4008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Probe+0x2b4) [0x151721882fe4]
+ 5  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5772) [0x151723f1d772]
+ 6  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x1517212d74a3]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x1517214a61f5]
+ 8  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x15172152689c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 902056 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

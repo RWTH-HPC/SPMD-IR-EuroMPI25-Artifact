@@ -1,0 +1,27 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:990041:0:990041]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:990041:1:990125]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970032.600596] [n23m0302:990041:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970032.600594] [n23m0302:990041:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+==== backtrace (tid: 990041) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1480efe98e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1480efe96b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1480efe96bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x1480eff19038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Win_flush+0x6fc) [0x1480f07febac]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflush-raccumulate_rget-001.c-instrumented.exe(+0x13fc) [0x559fe30ab3fc]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1480f037924a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1480f0379305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflush-raccumulate_rget-001.c-instrumented.exe(+0x1161) [0x559fe30ab161]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 990041 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

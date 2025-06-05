@@ -1,0 +1,15 @@
+[n23m0302:474192:0:474334]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid: 474334) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14d9801c5e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14d9801c3b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14d9801c3bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14d980246008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Probe+0x2b4) [0x14d980ae4fe4]
+ 5  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5772) [0x14d98317f772]
+ 6  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x14d9805394a3]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x14d9807081f5]
+ 8  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x14d98078889c]
+=================================
+Error when inserting memory access of type LOCAL_READ from file cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/conflict/004-MPI-conflict-get-load-local-yes.c:41 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/conflict/004-MPI-conflict-get-load-local-yes.c:39.
+The program will be exiting now with MPI_Abort.
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0

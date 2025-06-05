@@ -1,0 +1,37 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:994600:0:994933]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:994600:1:994600]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753970035.820140] [n23m0302:994600:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753970035.820142] [n23m0302:994600:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid: 994600) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x153b6df2ae9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x153b6df28b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x153b6df28bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x153b6dfab038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x153b6e9804eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x153b6e983f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x153b6e94cc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x153b6e94d146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x153b6e8c4a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x153b6e93b5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x153b6e93b7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x153b6e93c181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x153b6e7e50cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x153b70ee4c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock+0x11) [0x153b70ee7911]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-compare_and_swap_get_accumulate-001.c-instrumented.exe(+0x156a) [0x556033db156a]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x153b6e40b24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x153b6e40b305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-compare_and_swap_get_accumulate-001.c-instrumented.exe(+0x1141) [0x556033db1141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 994600 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

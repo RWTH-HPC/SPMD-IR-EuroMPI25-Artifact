@@ -1,0 +1,49 @@
+[n23m0302:880641:0:880925]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:880641:1:880641]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:880640:0:880640]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:880640:1:880926]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969957.037011] [n23m0302:880640:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969957.037010] [n23m0302:880640:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+==== backtrace (tid: 880640) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x148c23c61e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x148c23c5fb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x148c23c5fbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x148c23ce2038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Win_flush_all+0x822) [0x148c245c8b52]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_bufwrite-001.c-instrumented.exe(+0x13cf) [0x56386d39f3cf]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x148c2414224a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x148c24142305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_bufwrite-001.c-instrumented.exe(+0x1141) [0x56386d39f141]
+=================================
+==== backtrace (tid: 880641) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14778c7ace9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14778c7aab06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14778c7aabf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14778c82d038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14778d2024eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14778d205f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14778d1cec70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14778d1cf146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14778d146a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14778d1bd5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14778d1bd7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14778d1be181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14778d0670cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14778f766c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14778f7698ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_bufwrite-001.c-instrumented.exe(+0x143f) [0x556ca907c43f]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14778cc8d24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14778cc8d305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_bufwrite-001.c-instrumented.exe(+0x1141) [0x556ca907c141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 880641 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

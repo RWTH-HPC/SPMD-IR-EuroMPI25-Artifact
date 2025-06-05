@@ -1,0 +1,27 @@
+[n23m0302:481381:1:481644]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:481381:0:481643]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969463.412729] [n23m0302:481381:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969463.412730] [n23m0302:481381:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[n23m0302:481381:2:481381]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid: 481381) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14d4fdab4e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14d4fdab2b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14d4fdab2bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14d4fdb35008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Win_flush+0x6fc) [0x14d4fe41abac]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/021-MPI-static-win-in-array-local-yes.c-instrumented.exe(+0x14d7) [0x55de1e5644d7]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14d4fdf9524a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14d4fdf95305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/021-MPI-static-win-in-array-local-yes.c-instrumented.exe(+0x1141) [0x55de1e564141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 481381 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

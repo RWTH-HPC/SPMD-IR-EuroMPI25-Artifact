@@ -1,0 +1,42 @@
+[n23m0302:1104878:0:1105570]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1104877:0:1104877] Caught signal 11 (Segmentation fault: address not mapped to object at address (nil))
+==== backtrace (tid:1104877) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14de2d65ce9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x2908c) [0x14de2d65d08c]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2923a) [0x14de2d65d23a]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x3c050) [0x14de2db52050]
+ 4  /lib/x86_64-linux-gnu/ucx/libuct_ib.so.0(+0x431a2) [0x14de2ae201a2]
+ 5  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x72) [0x14de2d6dcef2]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14de2e0b24eb]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14de2e0b5f5e]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x29720e) [0x14de2e0b620e]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Wait+0x21e) [0x14de2df94dde]
+10  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_put-001.c-instrumented.exe(+0x13c7) [0x56303100f3c7]
+11  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14de2db3d24a]
+12  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14de2db3d305]
+13  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_put-001.c-instrumented.exe(+0x1151) [0x56303100f151]
+=================================
+==== backtrace (tid:1105570) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14a186319e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14a186317b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14a186317bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14a18639a008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x14a186d70596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x14a186d70880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x14a186c5037a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x14a1892d3702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x14a18668d4a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x14a18685c1f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x14a1868dc89c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1104877 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

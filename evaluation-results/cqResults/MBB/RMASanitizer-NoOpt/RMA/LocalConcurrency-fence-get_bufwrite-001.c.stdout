@@ -1,0 +1,19 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.YEAtrWN9tJ"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+[MUST-REPORT] Error: from: call @0: Local buffer data race at rank 0 between a write of size 8 at MPI_Get@1 and a previous write of size 4 at main@2. References of a representative process:
+[MUST-REPORT] Reference 1: call MPI_Getmain
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/RMASanitizer-NoOpt/RMA/LocalConcurrency-fence-get_bufwrite-001.c:44
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST-REPORT] Reference 2: call main
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/RMASanitizer-NoOpt/RMA/LocalConcurrency-fence-get_bufwrite-001.c:46
+[MUST-REPORT]  @rank 0, threadid 0;
+Rank 1 finished normally
+Rank 0 finished normally
+[MUST] Execution finished.

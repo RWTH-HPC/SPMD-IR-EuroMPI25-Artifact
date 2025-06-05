@@ -1,0 +1,20 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  %47 = load i32, ptr %10, align 4, !dbg !106 - LINE 44 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/sync/005-MPI-sync-lock-flush-local-yes.c
+AND
+  %46 = call i32 @MPI_Get(ptr noundef %10, i32 noundef 1, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 1, i32 noundef 1275069445, i32 noundef %45), !dbg !105 - LINE 42 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/sync/005-MPI-sync-lock-flush-local-yes.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+13 MPI functions including 6 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 1 MPI_Lock, 0 MPI_Lockall 1 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 1 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 1 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 8 (/18) LOAD and 1 (/10) STORE are instrumented
+===========================

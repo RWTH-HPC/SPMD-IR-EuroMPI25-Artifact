@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/rma+nonrma/011-nvshmem-coll-getnbi-broadcast-local-yes.cu:69:9: warning: bcast operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        nvshmem_int_broadcast(NVSHMEM_TEAM_WORLD, remote_alt_d, localbuf_d, 1, 0);
+        ^
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/rma+nonrma/011-nvshmem-coll-getnbi-broadcast-local-yes.cu:69:9: note: see current operation: %error_10 = "spmd.bcast"(%12, %address_6, %address_4, %c1_i64, %10, %c0_i32) <{isBlocking = true, usedModel = 2 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!spmd.comm, !llvm.ptr, !llvm.ptr, i64, !spmd.datatype, i32) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/rma+nonrma/011-nvshmem-coll-getnbi-broadcast-local-yes.cu:18:9: warning: get operation/call
+        nvshmem_int_get_nbi(localbuf, remote, 1, 1);
+        ^
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/rma+nonrma/011-nvshmem-coll-getnbi-broadcast-local-yes.cu:18:9: note: see current operation: %error_11 = "spmd.get"(%address_6, %c1_i64, %10, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %10, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 2 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %address_6
+Previous Access on: %address_6
+
+
+On the orignal value:
+Operand: %address_6
+
+
+Defined by:
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/rma+nonrma/011-nvshmem-coll-getnbi-broadcast-local-yes.cu:46:30: warning: malloc
+    int *localbuf_d = (int *)nvshmem_malloc(sizeof(int));
+                             ^
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/rma+nonrma/011-nvshmem-coll-getnbi-broadcast-local-yes.cu:46:30: note: see current operation: %address_6, %error_7 = "spmd.malloc"(%11, %c4_i64) <{usedModel = 2 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

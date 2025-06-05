@@ -1,0 +1,37 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/rma+nonrma/012-shmem-coll-putnbi-reduce-local-yes.c:35:5: warning: allreduce operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+    shmem_int_sum_reduce(SHMEM_TEAM_WORLD, &localbuf, &remote, 1);
+    ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/rma+nonrma/012-shmem-coll-putnbi-reduce-local-yes.c:35:5: note: see current operation: %error_1 = "spmd.allreduce"(%7, %2, %1, %c1_i64, %5, %4) <{isBlocking = true, usedModel = 1 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, !llvm.ptr, !llvm.ptr, i64, !spmd.datatype, !spmd.op) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/rma+nonrma/012-shmem-coll-putnbi-reduce-local-yes.c:32:9: warning: put operation/call
+        shmem_int_put_nbi(&remote, &localbuf, 1, 1);
+        ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/rma+nonrma/012-shmem-coll-putnbi-reduce-local-yes.c:32:9: note: see current operation: %error_3 = "spmd.put"(%1, %c1_i64, %6, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %6, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 1 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %1
+Previous Access on: %1
+
+
+On the orignal value:
+Operand: %1
+
+
+Defined by:
+<unknown>:0: warning: mlir.addressof
+<unknown>:0: note: see current operation: %1 = llvm.mlir.addressof @main.localbuf {spmd.executionKind = "All"} : !llvm.ptr
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

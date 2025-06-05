@@ -1,0 +1,35 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:1159632:0:1159632]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1159632:1:1160028]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid:1159632) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14d61ea38e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14d61ea36b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14d61ea36bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14d61eab9008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14d61f48e4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14d61f491f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14d61f45ac70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14d61f45b146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14d61f3d2a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14d61f4495d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14d61f4497ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14d61f44a181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14d61f2f30cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14d6219f2c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock+0x11) [0x14d6219f5911]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockunlock-rget_rget-001.c-instrumented.exe(+0x144b) [0x564867c3c44b]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14d61ef1924a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14d61ef19305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockunlock-rget_rget-001.c-instrumented.exe(+0x1141) [0x564867c3c141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1159632 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

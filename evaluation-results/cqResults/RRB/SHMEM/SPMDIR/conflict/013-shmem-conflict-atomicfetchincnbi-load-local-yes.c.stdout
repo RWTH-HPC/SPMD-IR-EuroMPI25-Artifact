@@ -1,0 +1,37 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/conflict/013-shmem-conflict-atomicfetchincnbi-load-local-yes.c:31:36: warning: load operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        printf("localbuf is %d\n", localbuf);
+                                   ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/conflict/013-shmem-conflict-atomicfetchincnbi-load-local-yes.c:31:36: note: see current operation: %24 = llvm.load %9 {alignment = 4 : i64, spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static", tbaa = [#llvm.tbaa_tag<base_type = <id = "int", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, access_type = <id = "int", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, offset = 0>]} : !llvm.ptr -> i32
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/conflict/013-shmem-conflict-atomicfetchincnbi-load-local-yes.c:29:9: warning: getAccumulate operation/call
+        shmem_int_atomic_fetch_inc_nbi(&localbuf, &remote, 1);
+        ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/conflict/013-shmem-conflict-atomicfetchincnbi-load-local-yes.c:29:9: note: see current operation: %error_2 = "spmd.getAccumulate"(%0, %c1_i64, %7, %c1_i64, %9, %c1_i64, %7, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %7, %c1_i64, %6) <{isAtomic = true, isBlocking = true, usedModel = 1 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, !llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64, !spmd.op) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %9
+Previous Access on: %9
+
+
+On the orignal value:
+Operand: %9
+
+
+Defined by:
+<unknown>:0: warning: alloca
+<unknown>:0: note: see current operation: %9 = llvm.alloca %c1_i32 x i32 {alignment = 4 : i64, spmd.executionKind = "All"} : (i32) -> !llvm.ptr
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

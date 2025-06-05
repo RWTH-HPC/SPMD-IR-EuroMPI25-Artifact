@@ -1,0 +1,37 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/003-MPI-p2p-put-irecv-local-yes.c:42:9: warning: put operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        MPI_Put(&value, 1, MPI_INT, 1, 0, 1, MPI_INT, win);
+        ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/003-MPI-p2p-put-irecv-local-yes.c:42:9: note: see current operation: %error_4 = "spmd.put"(%10, %c1_i64, %3, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %3, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/003-MPI-p2p-put-irecv-local-yes.c:40:9: warning: recv operation/call
+        MPI_Irecv(&value, 1, MPI_INT, 1, MPI_ANY_TAG, MPI_COMM_WORLD, &req);
+        ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/003-MPI-p2p-put-irecv-local-yes.c:40:9: note: see current operation: %req, %error_3 = "spmd.recv"(%2, %10, %c1_i64, %3, %c1_i32, %c-1_i32) <{isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!spmd.comm, !llvm.ptr, i64, !spmd.datatype, i32, i32) -> (!spmd.req, !spmd.error)
+
+
+With the alias values:
+Causing Access on: %10
+Previous Access on: %10
+
+
+On the orignal value:
+Operand: %10
+
+
+Defined by:
+<unknown>:0: warning: alloca
+<unknown>:0: note: see current operation: %10 = llvm.alloca %c1_i32 x i32 {alignment = 4 : i64, spmd.executionKind = "All"} : (i32) -> !llvm.ptr
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

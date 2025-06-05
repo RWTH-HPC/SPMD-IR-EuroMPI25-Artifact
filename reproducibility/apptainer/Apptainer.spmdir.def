@@ -1,0 +1,53 @@
+Bootstrap: docker
+From: debian:12
+Stage: base
+
+%arguments
+    DEBIAN_FRONTEND=noninteractive
+
+%files
+    requirements.txt /requirements.txt
+    common.sh /common.sh
+    shmem.sh /shmem.sh
+    time-wrapper.sh /usr/bin/time-wrapper
+    ../../spmd-ir/spmd /spmdir
+    ../../llvm-project /llvm-project
+
+%environment
+    export VIRTUAL_ENV=/opt/venv
+    export PATH="$VIRTUAL_ENV/bin:$PATH"
+
+%post
+    # Common installation of packages and MPI
+    sh common.sh
+
+    # SHMEM installation
+    sh shmem.sh
+
+    SPMDIR_GIT_DIR=/spmdir
+    BUILD_DIR=build
+    INSTALL_DIR=/opt/spmdir
+
+    mkdir ${BUILD_DIR}
+    cmake -G Ninja -S /llvm-project/llvm -B ${BUILD_DIR} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DLLVM_TARGETS_TO_BUILD="host;NVPTX" \
+    -DLLVM_ENABLE_PROJECTS="mlir;clang;openmp;lld;polly" \
+    -DLLVM_EXTERNAL_PROJECTS=spmd-dialect \
+    -DLLVM_EXTERNAL_SPMD_DIALECT_SOURCE_DIR=${SPMDIR_GIT_DIR} \
+    -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
+    -DLLVM_ENABLE_DUMP=ON \
+    -DLLVM_ENABLE_LIBEDIT=OFF
+    cmake --build ${BUILD_DIR} -- -j$(nproc --all) install
+
+    # Clean up build dir
+    rm -r ${BUILD_DIR}
+
+    # Set build dir for proxy apps
+    echo "export SPMDIR_BUILD='${INSTALL_DIR}'" >> $APPTAINER_ENVIRONMENT
+
+    # Set PATH variable
+    echo "export PATH=\"${INSTALL_DIR}/bin:\$PATH\"" >> $APPTAINER_ENVIRONMENT
+
+    # Clean up externals
+    rm -rf /externals

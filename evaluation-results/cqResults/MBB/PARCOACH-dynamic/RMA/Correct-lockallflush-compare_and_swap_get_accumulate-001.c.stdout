@@ -1,0 +1,57 @@
+[n23m0302:906367:0:906367]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:906367:1:906722]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:906368:0:906723]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:906368:1:906368]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 906367) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14b758dc8e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14b758dc6b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14b758dc6bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14b758e49008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14b75981e4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14b759821f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14b7597eac70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14b7597eb146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14b759762a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14b7597d95d4]
+==== backtrace (tid: 906368) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14e17332ce9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14e17332ab06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14e17332abf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14e1733ad038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14e173d824eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14e173d85f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14e173d4ec70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14e173d4f146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14e173cc6a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14e173d3d5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14e173d3d7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14e173d3e181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14e173be70cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14e1762e6c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14e1762e98ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-compare_and_swap_get_accumulate-001.c-instrumented.exe(+0x1578) [0x5581e6137578]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14e17380d24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14e17380d305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-compare_and_swap_get_accumulate-001.c-instrumented.exe(+0x1141) [0x5581e6137141]
+=================================
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14b7597d97ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14b7597da181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14b7596830cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14b75bd82c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14b75bd858ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-compare_and_swap_get_accumulate-001.c-instrumented.exe(+0x1578) [0x55e5f0c92578]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14b7592a924a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14b7592a9305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-compare_and_swap_get_accumulate-001.c-instrumented.exe(+0x1141) [0x55e5f0c92141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 906367 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,124 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function deeeeeeeeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+1 MPI functions including 1 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 1 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deeeeeeeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deeeeeeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deeeeeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deeeeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deeeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deeep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function deep...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function rank0...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/4) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+10 MPI functions including 4 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 2 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 11 (/17) LOAD and 1 (/10) STORE are instrumented
+===========================

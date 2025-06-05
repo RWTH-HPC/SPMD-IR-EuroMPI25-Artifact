@@ -1,0 +1,47 @@
+/*
+ * Copyright (c) 2016-2023, NVIDIA CORPORATION. All rights reserved.
+ *
+ * SPDX-License-Identifier: LicenseRef-NVSHMEM
+ */
+
+#ifndef NVSHMEM_CONSTANTS_H
+#define NVSHMEM_CONSTANTS_H
+#include <stdint.h>
+#include <limits.h>
+
+enum nvshmemi_cmp_type {
+    NVSHMEM_CMP_EQ = 0,
+    NVSHMEM_CMP_NE,
+    NVSHMEM_CMP_GT,
+    NVSHMEM_CMP_LE,
+    NVSHMEM_CMP_LT,
+    NVSHMEM_CMP_GE,
+    NVSHMEM_CMP_SENTINEL = INT_MAX,
+};
+
+// enum nvshmemi_thread_support {
+//     NVSHMEM_THREAD_SINGLE = 0,
+//     NVSHMEM_THREAD_FUNNELED,
+//     NVSHMEM_THREAD_SERIALIZED,
+//     NVSHMEM_THREAD_MULTIPLE,
+//     NVSHMEM_THREAD_TYPE_SENTINEL = INT_MAX,
+// };
+
+// enum {
+//     PROXY_GLOBAL_EXIT_NOT_REQUESTED = 0,
+//     PROXY_GLOBAL_EXIT_INIT,
+//     PROXY_GLOBAL_EXIT_REQUESTED,
+//     PROXY_GLOBAL_EXIT_FINISHED,
+//     PROXY_GLOBAL_EXIT_MAX_STATE = INT_MAX
+// };
+
+// enum {
+//     NVSHMEM_STATUS_NOT_INITIALIZED = 0,
+//     NVSHMEM_STATUS_IS_BOOTSTRAPPED,
+//     NVSHMEM_STATUS_IS_INITIALIZED,
+//     NVSHMEM_STATUS_LIMITED_MPG,
+//     NVSHMEM_STATUS_FULL_MPG,
+//     NVSHMEM_STATUS_INVALID = INT_MAX,
+// };
+
+#endif

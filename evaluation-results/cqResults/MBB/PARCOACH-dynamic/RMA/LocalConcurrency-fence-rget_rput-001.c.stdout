@@ -1,0 +1,35 @@
+[n23m0302:1113578:0:1113578]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1113578:1:1114141]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753970119.396694] [n23m0302:1113578:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970119.396693] [n23m0302:1113578:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+PARCOACH: stopping RMA analyzer, no issues found.
+==== backtrace (tid:1113578) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14a06fa38e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14a06fa36b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14a06fa36bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14a06fab9008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14a07048e4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14a070491f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14a07045ac70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260a85) [0x14a07045ba85]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1c9d57) [0x14a0703c4d57]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23d93b) [0x14a07043893b]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23da13) [0x14a070438a13]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23eab8) [0x14a070439ab8]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_fence+0x5df) [0x14a07039df4f]
+13  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-rget_rput-001.c-instrumented.exe(+0x1453) [0x56118fc06453]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14a06ff1924a]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14a06ff19305]
+16  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-rget_rput-001.c-instrumented.exe(+0x1141) [0x56118fc06141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1113578 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

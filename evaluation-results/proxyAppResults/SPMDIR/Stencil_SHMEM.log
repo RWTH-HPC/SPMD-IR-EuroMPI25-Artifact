@@ -1,0 +1,149 @@
+rm -f stencil.o wtime.o SHMEM_bail_out.o  stencil *.optrpt *~ charmrun stats.json stencil.decl.h stencil.def.h *.bc *.mlir
+/opt/spmdir/bin/clang -O1 -flto -fno-exceptions -g  -DSHMEM -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -DSPLITFENCE=0 -I/opt/spmdir/includesProgramModels/shmem/include -I../../include -c stencil.c
+In file included from stencil.c:62:
+../../include/par-res-kern_general.h:190:12: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  190 |   cost_opt=INT_MAX;
+      |           ~^~~~~~~
+/opt/spmdir/lib/clang/20/include/limits.h:50:19: note: expanded from macro 'INT_MAX'
+   50 | #define INT_MAX   __INT_MAX__
+      |                   ^~~~~~~~~~~
+<built-in>:60:21: note: expanded from macro '__INT_MAX__'
+   60 | #define __INT_MAX__ 2147483647
+      |                     ^~~~~~~~~~
+stencil.c:348:7: warning: address of array 'top_buf_in' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  348 |   if(!top_buf_in)
+      |      ~^~~~~~~~~~
+stencil.c:368:7: warning: address of array 'right_buf_in' will always evaluate to 'true' [-Wpointer-bool-conversion]
+  368 |   if(!right_buf_in)
+      |      ~^~~~~~~~~~~~
+3 warnings generated.
+/opt/spmdir/bin/clang -O1 -flto -fno-exceptions -g  -DSHMEM -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -DSPLITFENCE=0 -I/opt/spmdir/includesProgramModels/shmem/include -I../../include -c ../../common/wtime.c
+/opt/spmdir/bin/clang -O1 -flto -fno-exceptions -g  -DSHMEM -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -DSPLITFENCE=0 -I/opt/spmdir/includesProgramModels/shmem/include -I../../include -c ../../common/SHMEM_bail_out.c
+In file included from ../../common/SHMEM_bail_out.c:49:
+../../include/par-res-kern_general.h:190:12: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  190 |   cost_opt=INT_MAX;
+      |           ~^~~~~~~
+/opt/spmdir/lib/clang/20/include/limits.h:50:19: note: expanded from macro 'INT_MAX'
+   50 | #define INT_MAX   __INT_MAX__
+      |                   ^~~~~~~~~~~
+<built-in>:60:21: note: expanded from macro '__INT_MAX__'
+   60 | #define __INT_MAX__ 2147483647
+      |                     ^~~~~~~~~~
+1 warning generated.
+/opt/spmdir/bin/clang -o stencil.bc  -fuse-ld=lld -Wl,--lto-emit-llvm stencil.o wtime.o SHMEM_bail_out.o  -lm
+/opt/spmdir/bin/spmd-verify check-dataRace emitSPMDIR time stencil.bc
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+stencil.c:418:20: warning: store operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        left_buf_out[kk++]=IN(i,j);
+                          ^
+stencil.c:418:20: note: see current operation: llvm.store %619, %620 {alignment = 8 : i64, spmd.executionKind = "Dynamic", tbaa = [#llvm.tbaa_tag<base_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, access_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, offset = 0>]} : f64, !llvm.ptr
+
+
+Previous operation:
+
+stencil.c:413:7: warning: put operation/call
+      shmem_putmem_nbi(left_buf_in[sw], right_buf_out, RADIUS*height[0]*sizeof(DTYPE), right_nbr);
+      ^
+stencil.c:413:7: note: see current operation: %error_77 = "spmd.put"(%address_60, %600, %45, %c1_i64, %201, %win, %c0_i64, %600, %45, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 1 : i32}> {spmd.executionKind = "Dynamic"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %620
+Previous Access on: %address_60
+
+
+On the orignal value:
+Operand: %address_60
+
+
+Defined by:
+../../include/par-res-kern_shmem.h:87:12: warning: malloc
+    return shmem_malloc(n);
+           ^
+stencil.c:359:25: note: called from
+  right_buf_out=(DTYPE*)prk_shmem_malloc(2*sizeof(DTYPE)*RADIUS*maxheight[0]);
+                        ^
+../../include/par-res-kern_shmem.h:87:12: note: see current operation: %address_60, %error_61 = "spmd.malloc"(%71, %458) <{usedModel = 1 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+    return shmem_malloc(n);
+           ^
+
+--------------------------------------------------------------------------------------------------------------
+
+stencil.c:402:31: warning: store operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+          bottom_buf_out[kk++]= IN(i,j);
+                              ^
+stencil.c:402:31: note: see current operation: llvm.store %617, %618 {alignment = 8 : i64, spmd.executionKind = "Dynamic", tbaa = [#llvm.tbaa_tag<base_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, access_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, offset = 0>]} : f64, !llvm.ptr
+
+
+Previous operation:
+
+stencil.c:398:7: warning: put operation/call
+      shmem_putmem_nbi(bottom_buf_in[sw], top_buf_out, RADIUS*width[0]*sizeof(DTYPE), top_nbr);
+      ^
+stencil.c:398:7: note: see current operation: %error_77 = "spmd.put"(%address_46, %601, %47, %c1_i64, %203, %win, %c0_i64, %601, %47, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 1 : i32}> {spmd.executionKind = "Dynamic"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %618
+Previous Access on: %address_46
+
+
+On the orignal value:
+Operand: %address_46
+
+
+Defined by:
+../../include/par-res-kern_shmem.h:87:12: warning: malloc
+    return shmem_malloc(n);
+           ^
+stencil.c:339:23: note: called from
+  top_buf_out=(DTYPE*)prk_shmem_malloc(2*sizeof(DTYPE)*RADIUS*maxwidth[0]);
+                      ^
+../../include/par-res-kern_shmem.h:87:12: note: see current operation: %address_46, %error_47 = "spmd.malloc"(%71, %383) <{usedModel = 1 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+    return shmem_malloc(n);
+           ^
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+===-------------------------------------------------------------------------===
+                         ... Execution time report ...
+===-------------------------------------------------------------------------===
+  Total Execution Time: 0.1599 seconds
+
+  ----Wall Time----  ----Name----
+    0.0212 ( 13.3%)  Parser
+    0.0025 (  1.6%)  PrepareLLVMFuncInline
+    0.0061 (  3.8%)  Inliner
+    0.0001 (  0.0%)    (A) CallGraph
+    0.0028 (  1.7%)  'llvm.func' Pipeline
+    0.0028 (  1.7%)    Canonicalizer
+    0.0014 (  0.9%)  CSE
+    0.0000 (  0.0%)    (A) DominanceInfo
+    0.0012 (  0.8%)  Mem2Reg
+    0.0000 (  0.0%)    (A) DataLayoutAnalysis
+    0.0018 (  1.1%)  Canonicalizer
+    0.0006 (  0.4%)  InlineGPULaunchFuncs
+    0.0114 (  7.2%)  DeleteInlinedFuncs
+    0.0026 (  1.6%)  HandleLLVMUnreachable
+    0.0018 (  1.1%)  Canonicalizer
+    0.0053 (  3.3%)  LiftControlFlowToSCFPass
+    0.0000 (  0.0%)    (A) DominanceInfo
+    0.0093 (  5.8%)  Canonicalizer
+    0.0085 (  5.3%)  PromoteScfWhilePass
+    0.0031 (  1.9%)  Canonicalizer
+    0.0090 (  5.6%)  ConvertApiCallsToSPMD
+    0.0030 (  1.9%)  SimplifyCmpOps
+    0.0430 ( 26.9%)  MultiValueAnalysis
+    0.0000 (  0.0%)    (A) AliasAnalysis
+    0.0180 ( 11.3%)  CheckDataRace
+    0.0071 (  4.4%)  Rest
+    0.1599 (100.0%)  Total
+make: *** [../../common/make.common:17: stencil] Error 1
+Command (make stencil) took time (us): 2032280

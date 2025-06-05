@@ -1,0 +1,55 @@
+[n23m0302:481539:0:481926]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:481540:0:481540]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:481540:1:481925]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:481540:2:481927]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969463.725661] [n23m0302:481540:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969463.725664] [n23m0302:481540:2]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 7 was not set in ucs
+[n23m0302:481539:1:481924]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969463.725678] [n23m0302:481540:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+[1753969463.725683] [n23m0302:481539:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+[1753969463.725684] [n23m0302:481539:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid: 481540) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14ddffa93e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14ddffa91b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14ddffa91bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14ddffb14038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14de004e94eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14de004ecf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14de004b5c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14de004b6146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14de0042da2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14de004a45d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14de004a47ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14de004a5181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14de0034e0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14de02a4dc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x14de02a4f538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/028-MPI-static-mult-win-fence-local-no.c-instrumented.exe(+0x1599) [0x55c3b480d599]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14ddfff7424a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14ddfff74305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/028-MPI-static-mult-win-fence-local-no.c-instrumented.exe(+0x1121) [0x55c3b480d121]
+=================================
+==== backtrace (tid: 481924) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14738bee6e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14738bee4b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14738bee4bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14738bf67038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x14738c93d596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x14738c93d880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x14738c81d37a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x14738eea0702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x14738c25a4a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x14738c4291f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x14738c4a989c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 481540 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

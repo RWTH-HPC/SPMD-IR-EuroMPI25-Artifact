@@ -1,0 +1,35 @@
+[n23m0302:477354:0:477354]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:477354:1:477462]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+value is 1
+==== backtrace (tid: 477354) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x147cd00f1e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x147cd00efb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x147cd00efbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x147cd0172038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x147cd0b474eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x147cd0b4af5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x147cd0b13c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x147cd0b14146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x147cd0a8ba2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x147cd0b025d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x147cd0b027ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x147cd0b03181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x147cd09ac0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x147cd30abc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x147cd30ad538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/009-MPI-sync-request-local-yes.c-instrumented.exe(+0x1445) [0x55c355682445]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x147cd05d224a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x147cd05d2305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/009-MPI-sync-request-local-yes.c-instrumented.exe(+0x1141) [0x55c355682141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 477354 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

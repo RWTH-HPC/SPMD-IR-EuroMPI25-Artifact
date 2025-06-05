@@ -1,0 +1,77 @@
+Bootstrap: docker
+From: debian:12
+Stage: base
+
+%arguments
+    DEBIAN_FRONTEND=noninteractive
+    PARCOACH_VERSION=2.4.2
+
+%files
+    requirements.txt /requirements.txt
+    common.sh /common.sh
+    time-wrapper.sh /usr/bin/time-wrapper
+
+%environment
+    export VIRTUAL_ENV=/opt/venv
+    export PATH="$VIRTUAL_ENV/bin:$PATH"
+
+%post
+    # Common installation of packages and MPI
+    sh common.sh
+
+    apt-get update \
+    && apt-get -y -qq --no-install-recommends install \
+    clang-15 \
+    libomp-15-dev \
+    clang-format-15 \
+    llvm-15 \
+    lldb-15 \
+    lld-15 \
+    && apt-get -yq clean \
+    && rm --recursive --force /var/lib/apt/lists/*
+
+    # Ensure that LLVM 15 toolset is used
+    ln -s /usr/bin/FileCheck-15 /usr/bin/FileCheck
+    ln -s /usr/bin/clang-15 /usr/bin/clang
+    ln -s /usr/bin/clang++-15 /usr/bin/clang++
+    ln -s /usr/bin/clang-format-15 /usr/bin/clang-format
+    ln -s $(which llvm-link-15) /usr/bin/llvm-link
+    ln -s $(which opt-15) /usr/bin/opt
+    ln -s $(which llc-15) /usr/bin/llc
+    ln -s $(which lld-15) /usr/bin/lld
+
+    # Set Clang compiler as default and MPI compiler
+    export CC=clang
+    export CXX=clang++
+    export OMPI_CC=clang
+    export OMPI_CXX=clang++
+    export MPICH_CC=clang
+    export MPICH_CXX=clang++
+
+    echo "export CC=clang" >> $APPTAINER_ENVIRONMENT
+    echo "export CXX=clang++" >> $APPTAINER_ENVIRONMENT
+    echo "export OMPI_CC=clang" >> $APPTAINER_ENVIRONMENT
+    echo "export OMPI_CXX=clang++" >> $APPTAINER_ENVIRONMENT
+    echo "export MPICH_CC=clang" >> $APPTAINER_ENVIRONMENT
+    echo "export MPICH_CXX=clang++" >> $APPTAINER_ENVIRONMENT
+
+    BUILD_DIR=build
+    INSTALL_DIR=/opt/parcoach
+    # Install PARCOACH
+    wget https://gitlab.inria.fr/parcoach/parcoach/-/archive/{{PARCOACH_VERSION}}/parcoach-{{PARCOACH_VERSION}}.tar.gz && \
+      tar -xf parcoach-{{PARCOACH_VERSION}}.tar.gz && \
+      mkdir -p ${BUILD_DIR} && \
+      cmake -G Ninja -S parcoach-{{PARCOACH_VERSION}} -B ${BUILD_DIR} \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR} \
+        -DPARCOACH_ENABLE_TESTS=OFF 
+    cmake --build ${BUILD_DIR} -- -j$(nproc --all) install
+
+    # Clean up build dir
+    rm -rf ${BUILD_DIR}
+
+    # Set PATH variable
+    echo "export PATH=\"/opt/parcoach/bin:\$PATH\"" >> $APPTAINER_ENVIRONMENT
+
+    # Clean up externals
+    rm -rf /externals

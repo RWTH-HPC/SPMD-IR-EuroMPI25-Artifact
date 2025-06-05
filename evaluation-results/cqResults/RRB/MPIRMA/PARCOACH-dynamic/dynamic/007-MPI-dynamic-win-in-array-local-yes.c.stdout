@@ -1,0 +1,56 @@
+[n23m0302:486815:0:486815]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:486815:1:486892]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:486815:2:486894]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969469.277507] [n23m0302:486815:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[n23m0302:486814:0:486895]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:486814:1:486893]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969469.277510] [n23m0302:486815:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+[1753969469.277574] [n23m0302:486814:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969469.277573] [n23m0302:486814:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969469.277530] [n23m0302:486815:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969469.277530] [n23m0302:486815:2]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+==== backtrace (tid: 486815) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14584549ae9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x145845498b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x145845498bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14584551b038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x145845ef04eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x145845ef3f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x145845ebcc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x145845ebd146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x145845e34a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x145845eab5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x145845eab7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x145845eac181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x145845d550cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x145848454c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x145848456538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/dynamic/007-MPI-dynamic-win-in-array-local-yes.c-instrumented.exe(+0x1603) [0x55573b439603]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14584597b24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14584597b305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/dynamic/007-MPI-dynamic-win-in-array-local-yes.c-instrumented.exe(+0x1101) [0x55573b439101]
+=================================
+==== backtrace (tid: 486895) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14a4da19be9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14a4da199b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14a4da199bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14a4da21c008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x14a4dabf2596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x14a4dabf2880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x14a4daad237a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x14a4dd155702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x14a4da50f4a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x14a4da6de1f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x14a4da75e89c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 486815 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

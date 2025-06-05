@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockflush-get_accumulate-001.c:46:24: warning: accumulate operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+    /*MBBERROR_BEGIN*/ MPI_Accumulate(buf, 10, MPI_INT, 1, 10, 10, MPI_INT,
+                       ^
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockflush-get_accumulate-001.c:46:24: note: see current operation: %error_3 = "spmd.accumulate"(%19, %c10_i64, %4, %c1_i64, %c1_i32, %win, %c10_i64, %c10_i64, %4, %c1_i64, %5) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64, !spmd.op) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockflush-get_accumulate-001.c:44:24: warning: get operation/call
+    /*MBBERROR_BEGIN*/ MPI_Get(buf, 10, MPI_INT, 1, 0, 10, MPI_INT,
+                       ^
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockflush-get_accumulate-001.c:44:24: note: see current operation: %error_2 = "spmd.get"(%19, %c10_i64, %4, %c1_i64, %c1_i32, %win, %c0_i64, %c10_i64, %4, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %19
+Previous Access on: %19
+
+
+On the orignal value:
+Operand: %19
+
+
+Defined by:
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockflush-get_accumulate-001.c:42:23: warning: call
+    int *buf = (int *)calloc(10, sizeof(int));
+                      ^
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockflush-get_accumulate-001.c:42:23: note: see current operation: %19 = llvm.call @calloc(%c10_i64, %c4_i64) {memory_effects = #llvm.memory_effects<other = none, argMem = none, inaccessibleMem = readwrite>, no_unwind, spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static", will_return} : (i64, i64) -> !llvm.ptr
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

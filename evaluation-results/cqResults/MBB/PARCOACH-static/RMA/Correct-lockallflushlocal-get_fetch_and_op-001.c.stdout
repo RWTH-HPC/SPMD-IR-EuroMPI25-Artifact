@@ -1,0 +1,28 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  %33 = load i32, ptr %9, align 4, !dbg !77 - LINE 46 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/Correct-lockallflushlocal-get_fetch_and_op-001.c
+AND
+  %32 = call i32 @MPI_Get(ptr noundef %30, i32 noundef 10, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 10, i32 noundef 1275069445, i32 noundef %31), !dbg !76 - LINE 45 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/Correct-lockallflushlocal-get_fetch_and_op-001.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %38 = load i32, ptr %9, align 4, !dbg !84 - LINE 50 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/Correct-lockallflushlocal-get_fetch_and_op-001.c
+AND
+  %32 = call i32 @MPI_Get(ptr noundef %30, i32 noundef 10, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 10, i32 noundef 1275069445, i32 noundef %31), !dbg !76 - LINE 45 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/Correct-lockallflushlocal-get_fetch_and_op-001.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %41 = load i32, ptr %9, align 4, !dbg !87 - LINE 52 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/Correct-lockallflushlocal-get_fetch_and_op-001.c
+AND
+  %32 = call i32 @MPI_Get(ptr noundef %30, i32 noundef 10, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef 10, i32 noundef 1275069445, i32 noundef %31), !dbg !76 - LINE 45 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/Correct-lockallflushlocal-get_fetch_and_op-001.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+11 MPI functions including 5 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 1 MPI_Lockall 0 MPI_Unlock, 1 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 1 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 9 (/12) LOAD and 2 (/9) STORE are instrumented
+===========================

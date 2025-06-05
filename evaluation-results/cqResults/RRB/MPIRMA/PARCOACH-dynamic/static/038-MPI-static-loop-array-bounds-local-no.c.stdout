@@ -1,0 +1,51 @@
+[n23m0302:484743:0:484743]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:484743:1:484826]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 484743) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1490ce768e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1490ce766b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1490ce766bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x1490ce7e9008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x1490cf1be4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x1490cf1c1f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x1490cf18ac70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x1490cf18b146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x1490cf102a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x1490cf1795d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x1490cf1797ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x1490cf17a181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x1490cf0230cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x1490d1722c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x1490d1724538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/038-MPI-static-loop-array-bounds-local-no.c-instrumented.exe(+0x14f1) [0x5608c1c2c4f1]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1490cec4924a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1490cec49305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/038-MPI-static-loop-array-bounds-local-no.c-instrumented.exe(+0x1131) [0x5608c1c2c131]
+=================================
+[n23m0302:484742:0:484742]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:484742:1:484825]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 484742) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14a6b4a36e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14a6b4a34b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14a6b4a34bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14a6b4ab7008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14a6b548c4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14a6b548ff5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Send+0x585) [0x14a6b535edc5]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_update_on_comm_send+0xc6) [0x14a6b79f0fc6]
+ 8  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Get+0x493) [0x14a6b79f30a3]
+ 9  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/038-MPI-static-loop-array-bounds-local-no.c-instrumented.exe(+0x1431) [0x560ac6e8e431]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14a6b4f1724a]
+11  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14a6b4f17305]
+12  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/038-MPI-static-loop-array-bounds-local-no.c-instrumented.exe(+0x1131) [0x560ac6e8e131]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 484743 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

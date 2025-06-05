@@ -1,0 +1,20 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  %36 = load i32, ptr %9, align 4, !dbg !90 - LINE 50 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/LocalConcurrency-fence-rput_get-001.c
+AND
+  %34 = call i32 @MPI_Get(ptr noundef %32, i32 noundef 10, i32 noundef 1275069445, i32 noundef 0, i64 noundef 0, i32 noundef 10, i32 noundef 1275069445, i32 noundef %33), !dbg !88 - LINE 47 in cq-results-20250731-154348/MBB/PARCOACH-static/RMA/LocalConcurrency-fence-rput_get-001.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+11 MPI functions including 5 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 2 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 1 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 7 (/11) LOAD and 1 (/8) STORE are instrumented
+===========================

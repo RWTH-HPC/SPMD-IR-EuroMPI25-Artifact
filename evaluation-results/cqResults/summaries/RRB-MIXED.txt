@@ -1,0 +1,20 @@
+                                                   discipline SPMDIR RMASanitizer-NoOpt
+001-MPI-shmem-mixed-get-get-local-yes.c                  sync     TP                 TP
+002-MPI-shmem-mixed-get-get-local-no.c                   sync     TN                 TN
+003-MPI-shmem-mixed-single-sync-local-yes.c              sync     TP                 TP
+004-MPI-shmem-mixed-single-sync-local-no.c               sync     TN                 TN
+005-MPI-shmem-mixed-get-get-lock-mixup-local-yes.c       sync     TP                 TP
+006-MPI-shmem-mixed-get-get-lock-mixup-local-no.c        sync     TN                 TN
+
+      SPMDIR                               RMASanitizer-NoOpt                              
+          TP TN FP FN TO CR    P    R    A                 TP TN FP FN TO CR    P    R    A
+sync       3  3  0  0  0  0 1.00 1.00 1.00                  3  3  0  0  0  0 1.00 1.00 1.00
+total      3  3  0  0  0  0 1.00 1.00 1.00                  3  3  0  0  0  0 1.00 1.00 1.00
+=== sync ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR               3   3   0   0   0   0 1.00 1.00 1.00
+RMASanitizer-NoOpt   3   3   0   0   0   0 1.00 1.00 1.00
+=== Total ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR               3   3   0   0   0   0 1.00 1.00 1.00
+RMASanitizer-NoOpt   3   3   0   0   0   0 1.00 1.00 1.00

@@ -1,0 +1,24 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.OzaeZxRHSy"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+[MUST-REPORT] Error: from: call MPI_Isend@1: Lost send of rank 1 to rank 0 (both as ranks in MPI_COMM_WORLD) tag is 0! (Information on communicator:MPI_COMM_WORLD)
+[MUST-REPORT] 
+[MUST-REPORT] Information: from: call MPI_Finalize@0: The following MPI functions were used but are not supported by MUST: 
+[MUST-REPORT] MPI_Mprobe
+[MUST-REPORT] MPI_Mrecv
+[MUST-REPORT]  References of a representative process:
+[MUST-REPORT] Reference 1: call MPI_Mprobemain
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/RMASanitizer-NoOpt/P2P/Correct-mpi_mrecv-001.c:39
+[MUST-REPORT]  @rank 0, threadid 1;
+[MUST-REPORT] Reference 2: call MPI_Mrecvmain
+[MUST-REPORT] /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/RMASanitizer-NoOpt/P2P/Correct-mpi_mrecv-001.c:40
+[MUST-REPORT]  @rank 0, threadid 1;
+Rank 0 finished normally
+Rank 1 finished normally
+[MUST] Execution finished.

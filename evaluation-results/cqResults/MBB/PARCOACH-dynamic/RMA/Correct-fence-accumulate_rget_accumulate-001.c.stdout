@@ -1,0 +1,37 @@
+[n23m0302:918692:0:918692]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:918692:1:919345]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969984.447114] [n23m0302:918692:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969984.447125] [n23m0302:918692:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969984.447125] [n23m0302:918692:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+==== backtrace (tid: 918692) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x154bc90fce9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x154bc90fab06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x154bc90fabf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x154bc917d008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x154bc9b524eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x154bc9b55f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x154bc9b1ec70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x154bc9b1f146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x154bc9a96a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x154bc9b0d5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x154bc9b0d7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x154bc9b0e181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x154bc99b70cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x154bcc0b6c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x154bcc0b8538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-accumulate_rget_accumulate-001.c-instrumented.exe(+0x14e6) [0x55993400a4e6]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x154bc95dd24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x154bc95dd305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-accumulate_rget_accumulate-001.c-instrumented.exe(+0x1141) [0x55993400a141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 918692 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

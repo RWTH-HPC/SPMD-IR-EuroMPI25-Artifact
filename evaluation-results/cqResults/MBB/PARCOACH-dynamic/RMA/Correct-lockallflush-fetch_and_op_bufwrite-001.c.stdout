@@ -1,0 +1,38 @@
+[n23m0302:940398:0:940829]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:940397:0:940397]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:940397:1:940828]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 940397) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x151d78f5ae9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x151d78f58b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x151d78f58bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x151d78fdb008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Win_flush_all+0x822) [0x151d798c1b52]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x140e) [0x55fcce85d40e]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x151d7943b24a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x151d7943b305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x1141) [0x55fcce85d141]
+=================================
+==== backtrace (tid: 940829) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x150c48040e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x150c4803eb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x150c4803ebf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x150c480c1008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x150c48a97596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x150c48a97880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x150c4897737a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x150c4affa702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x150c483b44a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x150c485831f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x150c4860389c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 940398 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

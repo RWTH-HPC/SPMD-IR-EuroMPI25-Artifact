@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/031-MPI-static-get-store-same-array-local-no.c:43:21: warning: store operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        arr_midp[0] = 3;
+                    ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/031-MPI-static-get-store-same-array-local-no.c:43:21: note: see current operation: llvm.store %c3_i32, %21 {alignment = 4 : i64, spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static", tbaa = [#llvm.tbaa_tag<base_type = <id = "int", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, access_type = <id = "int", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, offset = 0>]} : i32, !llvm.ptr
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/031-MPI-static-get-store-same-array-local-no.c:42:9: warning: get operation/call
+        MPI_Get(arr_base, packet_size, MPI_INT, 1, 0, 1, MPI_INT, win);
+        ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/031-MPI-static-get-store-same-array-local-no.c:42:9: note: see current operation: %error_3 = "spmd.get"(%baseAddress, %c25_i64, %3, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %3, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %21
+Previous Access on: %baseAddress
+
+
+On the orignal value:
+Operand: %baseAddress
+
+
+Defined by:
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/031-MPI-static-get-store-same-array-local-no.c:27:5: warning: winAlloc
+    MPI_Win_allocate(ARR_SIZE * sizeof(int), sizeof(int), MPI_INFO_NULL, MPI_COMM_WORLD, &arr_base, &win);
+    ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/static/031-MPI-static-get-store-same-array-local-no.c:27:5: note: see current operation: %baseAddress, %win, %error_1 = "spmd.winAlloc"(%2, %c400_i64, %c4_i32) <{usedModel = 0 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64, i32) -> (!llvm.ptr, !spmd.win, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

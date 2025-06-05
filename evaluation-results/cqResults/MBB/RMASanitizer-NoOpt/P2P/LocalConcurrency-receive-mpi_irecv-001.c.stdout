@@ -1,0 +1,13 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.QC2tYnQeHa"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+rank 1 (of 2), pid 1831217 caught signal nr 15
+rank -1 (of -1), pid 1831218 caught signal nr 15
+Abort(143) on node 2 (rank 2 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 143) - process 2
+Abort(143) on node 1 (rank 1 in comm 464): application called MPI_Abort(comm=0x84000004, 143) - process 1

@@ -1,0 +1,122 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.OgEUzKGpSi"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+Process 0 finished. Sums: sum0 = 4950, sum1 = 7450
+Process 1 finished. Sums: sum0 = 9900, sum1 = 0
+[MUST-REPORT] Error: from: call MPI_Win_lock@0: The provided lock type (234) for MPI_Win_lock is invalid.
+[MUST-REPORT] Error: from: call MPI_Win_lock@0: The provided lock type (234) for MPI_Win_lock is invalid.
+[1753969529.982344] [n23m0302:511488:0]          rcache.c:674  UCX  WARN  ucp_rcache: destroying inuse region 0x7b2800004880 [0x7f6956c01000..0x7f6956c01190] g- rw ref 1  md[0]=self md[1]=tcp md[4]=mlx5_0 md[5]=cma
+[n23m0302:511488:0:511488]      rcache.c:409  Assertion `region->refcount == 0' failed: region 0x7b2800004880 0x7f6956c01000..0x7f6956c01190 of ucp_rcache
+[1753969529.983062] [n23m0302:511489:0]          rcache.c:674  UCX  WARN  ucp_rcache: destroying inuse region 0x7b2800004880 [0x7ffb29f03190..0x7ffb29f03320] g- rw ref 1  md[0]=self md[1]=tcp md[4]=mlx5_0 md[5]=cma
+[n23m0302:511489:0:511489]      rcache.c:409  Assertion `region->refcount == 0' failed: region 0x7b2800004880 0x7ffb29f03190..0x7ffb29f03320 of ucp_rcache
+==== backtrace (tid: 511489) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_debug_print_backtrace+0x35) [0x7ffb2d1aadd5]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x7ffb2d1abe9c]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x7ffb2d1a9b06]
+ 3  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x7ffb2d1a9bf1]
+ 4  /lib/x86_64-linux-gnu/libucs.so.0(+0x2e1b2) [0x7ffb2d1b11b2]
+ 5  /lib/x86_64-linux-gnu/libucs.so.0(+0x2ea8b) [0x7ffb2d1b1a8b]
+ 6  /lib/x86_64-linux-gnu/libucs.so.0(ucs_class_call_cleanup_chain+0x66) [0x7ffb2d1bd786]
+ 7  /lib/x86_64-linux-gnu/libucs.so.0(ucs_rcache_destroy+0x18) [0x7ffb2d1b2b68]
+ 8  /lib/x86_64-linux-gnu/libucp.so.0(ucp_cleanup+0x11) [0x7ffb2d203b21]
+==== backtrace (tid: 511488) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_debug_print_backtrace+0x35) [0x7f6958f88dd5]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x7f6958f89e9c]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x7f6958f87b06]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2f8f09) [0x7ffb2dd3cf09]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2db98d) [0x7ffb2dd1f98d]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x28d51c) [0x7ffb2dcd151c]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Finalize+0x13) [0x7ffb2db7c6e3]
+13  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7ffb307c8958]
+14  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7ffb3084298b]
+15  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7ffb307c8958]
+16  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7ffb3084298b]
+17  /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31/modules//libweaver-wrapp-gen-output-0.so(MPI_Finalize+0x18c) [0x7ffb2965d16c]
+18  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7ffb307c8958]
+19  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7ffb3084298b]
+20  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7ffb307c8958]
+21  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7ffb3084298b]
+22  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7ffb307c8958]
+23  /opt/rmasanitizer/lib/libpnmpi.so(MPI_Finalize+0x9e) [0x7ffb307c880e]
+24  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0xd5671) [0x56405a36e671]
+ 3  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x7f6958f87bf1]
+ 4  /lib/x86_64-linux-gnu/libucs.so.0(+0x2e1b2) [0x7f6958f8f1b2]
+ 5  /lib/x86_64-linux-gnu/libucs.so.0(+0x2ea8b) [0x7f6958f8fa8b]
+ 6  /lib/x86_64-linux-gnu/libucs.so.0(ucs_class_call_cleanup_chain+0x66) [0x7f6958f9b786]
+ 7  /lib/x86_64-linux-gnu/libucs.so.0(ucs_rcache_destroy+0x18) [0x7f6958f90b68]
+ 8  /lib/x86_64-linux-gnu/libucp.so.0(ucp_cleanup+0x11) [0x7f6958fe1b21]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2f8f09) [0x7f6959b1af09]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2db98d) [0x7f6959afd98d]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x28d51c) [0x7f6959aaf51c]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Finalize+0x13) [0x7f695995a6e3]
+25  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x7ffb2d74524a]
+26  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x7ffb2d745305]
+27  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0x21421) [0x56405a2ba421]
+=================================
+13  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7f695c5a6958]
+14  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7f695c62098b]
+15  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7f695c5a6958]
+16  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7f695c62098b]
+17  /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31/modules//libweaver-wrapp-gen-output-0.so(MPI_Finalize+0x18c) [0x7f695545d16c]
+18  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7f695c5a6958]
+19  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7f695c62098b]
+20  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7f695c5a6958]
+21  /opt/rmasanitizer/lib/libpnmpi.so(XMPI_Finalize+0x1b) [0x7f695c62098b]
+22  /opt/rmasanitizer/lib/libpnmpi.so(NQJ_Finalize+0xe8) [0x7f695c5a6958]
+23  /opt/rmasanitizer/lib/libpnmpi.so(MPI_Finalize+0x9e) [0x7f695c5a680e]
+24  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0xd5671) [0x55f3d4304671]
+25  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x7f695952324a]
+26  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x7f6959523305]
+27  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0x21421) [0x55f3d4250421]
+=================================
+rank 1 (of 2), pid 511489 caught signal nr 6
+rank 0 (of 2), pid 511488 caught signal nr 6
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(backtrace+0x64)[0x56405a309c24]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(+0xc298)[0x7ffb2bd28298]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(_Z15mySignalHandleri+0x119)[0x7ffb2bd281f9]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(backtrace+0x64)[0x55f3d429fc24]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(+0xc298)[0x7f695800d298]
+/opt/rmasanitizer/modules//libcProtMpiSplitComm.so(_Z15mySignalHandleri+0x119)[0x7f695800d1f9]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0x56980)[0x56405a2ef980]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0x56980)[0x55f3d4285980]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0x56ea6)[0x56405a2efea6]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(+0x56ea6)[0x55f3d4285ea6]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3c050)[0x7ffb2d75a050]
+/lib/x86_64-linux-gnu/libc.so.6(+0x3c050)[0x7f6959538050]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8aeec)[0x7ffb2d7a8eec]
+/lib/x86_64-linux-gnu/libc.so.6(+0x8aeec)[0x7f6959586eec]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x12)[0x7ffb2d759fb2]
+/lib/x86_64-linux-gnu/libc.so.6(gsignal+0x12)[0x7f6959537fb2]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xd3)[0x7ffb2d744472]
+/lib/x86_64-linux-gnu/libc.so.6(abort+0xd3)[0x7f6959522472]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(abort+0x73)[0x56405a2ee3a3]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/RMASanitizer-NoOpt/static/022-MPI-static-win-in-array-local-no.c.exe-must(abort+0x73)[0x55f3d42843a3]
+/lib/x86_64-linux-gnu/libucs.so.0(+0x26b0b)[0x7ffb2d1a9b0b]
+/lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1)[0x7ffb2d1a9bf1]
+/lib/x86_64-linux-gnu/libucs.so.0(+0x26b0b)[0x7f6958f87b0b]
+/lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1)[0x7f6958f87bf1]
+/lib/x86_64-linux-gnu/libucs.so.0(+0x2e1b2)[0x7ffb2d1b11b2]
+/lib/x86_64-linux-gnu/libucs.so.0(+0x2ea8b)[0x7ffb2d1b1a8b]
+/lib/x86_64-linux-gnu/libucs.so.0(+0x2e1b2)[0x7f6958f8f1b2]
+/lib/x86_64-linux-gnu/libucs.so.0(+0x2ea8b)[0x7f6958f8fa8b]
+/lib/x86_64-linux-gnu/libucs.so.0(ucs_class_call_cleanup_chain+0x66)[0x7ffb2d1bd786]
+/lib/x86_64-linux-gnu/libucs.so.0(ucs_rcache_destroy+0x18)[0x7ffb2d1b2b68]
+/lib/x86_64-linux-gnu/libucs.so.0(ucs_class_call_cleanup_chain+0x66)[0x7f6958f9b786]
+/lib/x86_64-linux-gnu/libucs.so.0(ucs_rcache_destroy+0x18)[0x7f6958f90b68]
+/lib/x86_64-linux-gnu/libucp.so.0(ucp_cleanup+0x11)[0x7ffb2d203b21]
+/lib/x86_64-linux-gnu/libucp.so.0(ucp_cleanup+0x11)[0x7f6958fe1b21]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2f8f09)[0x7ffb2dd3cf09]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2f8f09)[0x7f6959b1af09]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2db98d)[0x7ffb2dd1f98d]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2db98d)[0x7f6959afd98d]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x28d51c)[0x7ffb2dcd151c]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x28d51c)[0x7f6959aaf51c]
+Waiting up to 30 seconds for analyses to be finished.
+Waiting up to 30 seconds for analyses to be finished.
+[MUST] Execution finished.

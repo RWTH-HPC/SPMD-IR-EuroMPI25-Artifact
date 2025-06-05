@@ -1,0 +1,26 @@
+[n23m0302:1096873:0:1096873]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1096873:1:1097338]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+Error when inserting memory access of type RMA_READ from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-get_put-001.c:46 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-get_put-001.c:44.
+The program will be exiting now with MPI_Abort.
+==== backtrace (tid:1096873) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14656847fe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14656847db06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14656847dbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x146568500008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x146568ed54eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x146568ed8f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x146568ea1c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x146568ea2146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x146568e19a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x146568e905d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x146568e907ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x146568e91181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x146568d3a0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14656b439c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x14656b43b538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-get_put-001.c-instrumented.exe(+0x144b) [0x5593f334c44b]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14656896024a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x146568960305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-get_put-001.c-instrumented.exe(+0x1131) [0x5593f334c131]
+=================================
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0

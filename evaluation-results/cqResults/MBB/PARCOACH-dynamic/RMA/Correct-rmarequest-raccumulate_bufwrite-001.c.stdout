@@ -1,0 +1,44 @@
+[n23m0302:1059830:0:1059830]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1059830:1:1060339]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970081.534663] [n23m0302:1059830:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970081.534663] [n23m0302:1059830:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753970081.534669] [n23m0302:1059831:0]          ucp_am.c:300  UCX  WARN  UCP Active Message was received with id : 513, but there is no registered callback for that id
+[n23m0302:1059831:0:1060338]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid:1059830) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14e595e75e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14e595e73b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14e595e73bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14e595ef6038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14e5968cb4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14e5968cef5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x29720e) [0x14e5968cf20e]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Wait+0x21e) [0x14e5967addde]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-raccumulate_bufwrite-001.c-instrumented.exe(+0x13bf) [0x5569981683bf]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14e59635624a]
+10  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14e596356305]
+11  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-raccumulate_bufwrite-001.c-instrumented.exe(+0x1141) [0x556998168141]
+=================================
+==== backtrace (tid:1060338) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x152128904e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x152128902b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x152128902bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x152128985008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x15212935b596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x15212935b880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x15212923b37a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x15212b8be702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x152128c784a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x152128e471f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x152128ec789c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1059830 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

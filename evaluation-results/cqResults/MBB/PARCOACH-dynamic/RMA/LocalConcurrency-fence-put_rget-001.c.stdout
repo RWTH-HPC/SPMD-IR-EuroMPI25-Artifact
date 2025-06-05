@@ -1,0 +1,57 @@
+[n23m0302:1117295:0:1117295]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1117294:0:1117294]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1117294:1:1117951]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1117295:1:1117952]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid:1117294) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x15393c92be9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x15393c929b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x15393c929bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x15393c9ac008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x15393d3814eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x15393d384f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x15393d34dc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x15393d34e146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x15393d2c5a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x15393d33c5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x15393d33c7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x15393d33d181]
+==== backtrace (tid:1117295) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1504cc2b1e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1504cc2afb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1504cc2afbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x1504cc332008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x1504ccd074eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x1504ccd0af5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x1504cccd3c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x1504cccd4146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x1504ccc4ba2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x1504cccc25d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x1504cccc27ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x1504cccc3181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x1504ccb6c0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x1504cf26bc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x1504cf26d538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-put_rget-001.c-instrumented.exe(+0x1457) [0x55598cde9457]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1504cc79224a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1504cc792305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-put_rget-001.c-instrumented.exe(+0x1141) [0x55598cde9141]
+=================================
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x15393d1e60cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x15393f8e5c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x15393f8e7538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-put_rget-001.c-instrumented.exe(+0x1457) [0x55e76aa5c457]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x15393ce0c24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x15393ce0c305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-fence-put_rget-001.c-instrumented.exe(+0x1141) [0x55e76aa5c141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1117295 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

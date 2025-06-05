@@ -1,0 +1,25 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:1030524:0:1030524]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1030524:1:1030900]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid:1030524) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14c5e8016e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14c5e8014b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14c5e8014bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14c5e8097038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Win_flush_local+0x6e4) [0x14c5e897e5c4]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x1404) [0x56148c1b7404]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14c5e84f724a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14c5e84f7305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x1141) [0x56148c1b7141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1030524 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

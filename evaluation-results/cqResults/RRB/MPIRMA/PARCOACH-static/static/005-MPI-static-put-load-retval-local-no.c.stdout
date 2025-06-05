@@ -1,0 +1,28 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function aliasgenerator...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+0 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/2) LOAD and 0 (/1) STORE are instrumented
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+11 MPI functions including 5 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 1 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 2 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 1 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 13 (/19) LOAD and 3 (/12) STORE are instrumented
+===========================

@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MIXED/SPMDIR/sync/003-MPI-shmem-mixed-single-sync-local-yes.c:57:9: warning: get operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        MPI_Get(localbuf, 1, MPI_INT, mpi_ranks[1], 0, 1, MPI_INT, win);
+        ^
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MIXED/SPMDIR/sync/003-MPI-shmem-mixed-single-sync-local-yes.c:57:9: note: see current operation: %error_12 = "spmd.get"(%address_8, %c1_i64, %6, %c1_i64, %34, %win, %c0_i64, %c1_i64, %6, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+Previous operation:
+
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MIXED/SPMDIR/sync/003-MPI-shmem-mixed-single-sync-local-yes.c:50:9: warning: get operation/call
+        shmem_int_get_nbi(localbuf, remote2, 1, 1);
+        ^
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MIXED/SPMDIR/sync/003-MPI-shmem-mixed-single-sync-local-yes.c:50:9: note: see current operation: %error_14 = "spmd.get"(%address_8, %c1_i64, %2, %c1_i64, %c1_i32, %win_12, %c0_i64, %c1_i64, %2, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 1 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %address_8
+Previous Access on: %address_8
+
+
+On the orignal value:
+Operand: %address_8
+
+
+Defined by:
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MIXED/SPMDIR/sync/003-MPI-shmem-mixed-single-sync-local-yes.c:37:28: warning: malloc
+    int* localbuf = (int*)(shmem_malloc(sizeof(int)));
+                           ^
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MIXED/SPMDIR/sync/003-MPI-shmem-mixed-single-sync-local-yes.c:37:28: note: see current operation: %address_8, %error_9 = "spmd.malloc"(%4, %c4_i64) <{usedModel = 1 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

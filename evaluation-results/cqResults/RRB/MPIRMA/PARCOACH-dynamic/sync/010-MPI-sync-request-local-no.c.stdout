@@ -1,0 +1,56 @@
+[1753969460.247375] [n23m0302:477244:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969460.247383] [n23m0302:477244:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+[1753969460.247385] [n23m0302:477244:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[n23m0302:477244:0:477244]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:477244:1:477424]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:477243:0:477243]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:477243:1:477425]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969460.247992] [n23m0302:477243:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969460.248002] [n23m0302:477243:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969460.248002] [n23m0302:477243:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+==== backtrace (tid: 477243) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x147deb9dbe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x147deb9d9b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x147deb9d9bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x147deba5c038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x147dec4314eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x147dec434f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x29720e) [0x147dec43520e]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Wait+0x21e) [0x147dec313dde]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/010-MPI-sync-request-local-no.c-instrumented.exe(+0x13ea) [0x55772c2f23ea]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x147debebc24a]
+10  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x147debebc305]
+11  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/010-MPI-sync-request-local-no.c-instrumented.exe(+0x1141) [0x55772c2f2141]
+=================================
+==== backtrace (tid: 477244) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1476b8da4e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1476b8da2b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1476b8da2bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x1476b8e25008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x1476b97fa4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x1476b97fdf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x1476b97c6c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x1476b97c7146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x1476b973ea2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x1476b97b55d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x1476b97b57ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x1476b97b6181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x1476b965f0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x1476bbd5ec5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x1476bbd60538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/010-MPI-sync-request-local-no.c-instrumented.exe(+0x1445) [0x56245455a445]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1476b928524a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1476b9285305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/010-MPI-sync-request-local-no.c-instrumented.exe(+0x1141) [0x56245455a141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 477243 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,59 @@
+[1753969472.238160] [n23m0302:489477:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969472.238163] [n23m0302:489477:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[n23m0302:489476:0:489476]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:489476:1:489531]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:489477:0:489477]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:489477:1:489532]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid: 489476) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x153a3c119e9c]
+==== backtrace (tid: 489477) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x151e7b065e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x151e7b063b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x151e7b063bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x151e7b0e6038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x151e7babb4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x151e7babef5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x151e7ba87c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x151e7ba88146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x151e7b9ffa2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x151e7ba765d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x151e7ba767ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x151e7ba77181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x151e7b9200cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x151e7e01fc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x151e7e021538]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x153a3c117b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x153a3c117bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x153a3c19a008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x153a3cb6f4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x153a3cb72f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x153a3cb3bc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x153a3cb3c146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x153a3cab3a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x153a3cb2a5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x153a3cb2a7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x153a3cb2b181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x153a3c9d40cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x153a3f0d3c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x153a3f0d5538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/012-MPI-coll-put-ireduce-local-yes.c-instrumented.exe(+0x144f) [0x55da1e64a44f]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x153a3c5fa24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x153a3c5fa305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/012-MPI-coll-put-ireduce-local-yes.c-instrumented.exe(+0x1151) [0x55da1e64a151]
+=================================
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/012-MPI-coll-put-ireduce-local-yes.c-instrumented.exe(+0x144f) [0x55b2e7f8944f]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x151e7b54624a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x151e7b546305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/012-MPI-coll-put-ireduce-local-yes.c-instrumented.exe(+0x1151) [0x55b2e7f89151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 489477 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

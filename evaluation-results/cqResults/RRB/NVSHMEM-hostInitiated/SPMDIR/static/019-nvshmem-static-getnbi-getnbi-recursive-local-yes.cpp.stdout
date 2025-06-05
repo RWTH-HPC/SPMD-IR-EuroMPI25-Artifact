@@ -1,0 +1,49 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:17:5: warning: get operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+    nvshmem_int_get_nbi(localbuf_d, remote_d, 1, 1);
+    ^
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:54:9: note: called from
+        inefficient_get(0, localbuf_d, remote_d);
+        ^
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:17:5: note: see current operation: %error_7 = "spmd.get"(%address_4, %c1_i64, %2, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %2, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 2 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+    nvshmem_int_get_nbi(localbuf_d, remote_d, 1, 1);
+    ^
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:17:5: warning: get operation/call
+    nvshmem_int_get_nbi(localbuf_d, remote_d, 1, 1);
+    ^
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:54:9: note: called from
+        inefficient_get(0, localbuf_d, remote_d);
+        ^
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:17:5: note: see current operation: %error_7 = "spmd.get"(%address_4, %c1_i64, %2, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %2, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 2 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+    nvshmem_int_get_nbi(localbuf_d, remote_d, 1, 1);
+    ^
+
+
+With the alias values:
+Causing Access on: %address_4
+Previous Access on: %address_4
+
+
+On the orignal value:
+Operand: %address_4
+
+
+Defined by:
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:44:30: warning: malloc
+    int *localbuf_d = (int *)nvshmem_malloc(sizeof(int) * ARR_SIZE);
+                             ^
+cq-results-20250731-154348/RRB/NVSHMEM-hostInitiated/SPMDIR/static/019-nvshmem-static-getnbi-getnbi-recursive-local-yes.cpp:44:30: note: see current operation: %address_4, %error_5 = "spmd.malloc"(%3, %c40_i64) <{usedModel = 2 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

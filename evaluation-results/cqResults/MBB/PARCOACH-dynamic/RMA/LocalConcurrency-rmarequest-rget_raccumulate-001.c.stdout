@@ -1,0 +1,60 @@
+[n23m0302:1163156:0:1163156]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1163156:1:1163401]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1163155:0:1163155]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970154.840808] [n23m0302:1163156:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+[1753970154.840817] [n23m0302:1163156:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 11 was not set in ucs
+[1753970154.840821] [n23m0302:1163156:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+[n23m0302:1163155:1:1163402]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid:1163155) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x145dedca5e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x145dedca3b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x145dedca3bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x145dedd26008]
+==== backtrace (tid:1163156) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x151693faee9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x151693facb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x151693facbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x15169402f008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x151694a044eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x151694a07f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x1516949d0c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x1516949d1146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x151694948a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x1516949bf5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x1516949bf7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x1516949c0181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x1516948690cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x151696f68c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x151696f6b8ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-rmarequest-rget_raccumulate-001.c-instrumented.exe(+0x1469) [0x557e04000469]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x15169448f24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x15169448f305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-rmarequest-rget_raccumulate-001.c-instrumented.exe(+0x1151) [0x557e04000151]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x145dee6fb4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x145dee6fef5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x145dee6c7c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x145dee6c8146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x145dee63fa2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x145dee6b65d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x145dee6b67ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x145dee6b7181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x145dee5600cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x145df0c5fc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x145df0c628ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-rmarequest-rget_raccumulate-001.c-instrumented.exe(+0x1469) [0x55adc6818469]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x145dee18624a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x145dee186305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-rmarequest-rget_raccumulate-001.c-instrumented.exe(+0x1151) [0x55adc6818151]
+=================================
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1163156 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

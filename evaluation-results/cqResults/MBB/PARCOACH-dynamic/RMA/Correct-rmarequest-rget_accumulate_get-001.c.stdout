@@ -1,0 +1,50 @@
+[n23m0302:1050045:0:1050045]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1050045:1:1050530]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:1050047:0:1050047]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1050047:1:1050531]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid:1050045) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14e78f12ce9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14e78f12ab06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14e78f12abf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14e78f1ad038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14e78fb824eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14e78fb85f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x29720e) [0x14e78fb8620e]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Wait+0x21e) [0x14e78fa64dde]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_accumulate_get-001.c-instrumented.exe(+0x1449) [0x55b0ee182449]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14e78f60d24a]
+10  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14e78f60d305]
+11  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_accumulate_get-001.c-instrumented.exe(+0x1151) [0x55b0ee182151]
+=================================
+==== backtrace (tid:1050047) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x154eb706ee9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x154eb706cb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x154eb706cbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x154eb70ef038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x154eb7ac44eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x154eb7ac7f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x154eb7a90c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x154eb7a91146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x154eb7a08a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x154eb7a7f5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x154eb7a7f7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x154eb7a80181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x154eb79290cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x154eba028c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x154eba02b8ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_accumulate_get-001.c-instrumented.exe(+0x14f5) [0x55a03f4dd4f5]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x154eb754f24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x154eb754f305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-rmarequest-rget_accumulate_get-001.c-instrumented.exe(+0x1151) [0x55a03f4dd151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1050045 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

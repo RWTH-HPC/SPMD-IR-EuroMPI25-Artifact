@@ -1,0 +1,26 @@
+[n23m0302:901093:0:901093]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:901093:1:901436]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+Error when inserting memory access of type RMA_READ from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_put-001.c:46 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_put-001.c:44.
+The program will be exiting now with MPI_Abort.
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+==== backtrace (tid: 901093) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14a1e0a28e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14a1e0a26b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14a1e0a26bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14a1e0aa9008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14a1e147e4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14a1e1481f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14a1e144ac70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14a1e144b146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14a1e13c2a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14a1e14395d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14a1e14397ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14a1e143a181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14a1e12e30cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14a1e39e2c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14a1e39e58ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_put-001.c-instrumented.exe(+0x148b) [0x55bf7425d48b]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14a1e0f0924a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14a1e0f09305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-get_put-001.c-instrumented.exe(+0x1151) [0x55bf7425d151]
+=================================

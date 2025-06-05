@@ -1,0 +1,35 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:977626:0:977626]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:977626:1:977770]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 977626) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x146bce362e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x146bce360b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x146bce360bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x146bce3e3008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x146bcedb84eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x146bcedbbf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x146bced84c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x146bced85146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x146bcecfca2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x146bced735d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x146bced737ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x146bced74181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x146bcec1d0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x146bd131cc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock+0x11) [0x146bd131f911]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflush-raccumulate_get_accumulate-001.c-instrumented.exe(+0x14d0) [0x5565a427f4d0]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x146bce84324a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x146bce843305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflush-raccumulate_get_accumulate-001.c-instrumented.exe(+0x1151) [0x5565a427f151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 977626 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

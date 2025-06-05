@@ -1,0 +1,35 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:1039034:0:1039034]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1039034:1:1039322]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid:1039034) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x145fa21d4e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x145fa21d2b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x145fa21d2bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x145fa2255038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x145fa2c2a4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x145fa2c2df5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x145fa2bf6c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x145fa2bf7146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x145fa2b6ea2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x145fa2be55d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x145fa2be57ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x145fa2be6181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x145fa2a8f0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x145fa518ec5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock+0x11) [0x145fa5191911]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-fetch_and_op_get_accumulate-001.c-instrumented.exe(+0x14fb) [0x55acc755d4fb]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x145fa26b524a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x145fa26b5305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-fetch_and_op_get_accumulate-001.c-instrumented.exe(+0x1141) [0x55acc755d141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1039034 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

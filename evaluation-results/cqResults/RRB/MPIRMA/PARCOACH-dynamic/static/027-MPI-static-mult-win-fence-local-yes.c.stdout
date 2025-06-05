@@ -1,0 +1,47 @@
+[n23m0302:481619:0:481902]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:481619:1:481905]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:481620:0:481903]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:481620:1:481904]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969463.720608] [n23m0302:481620:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969463.720619] [n23m0302:481619:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969463.720623] [n23m0302:481620:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969463.720622] [n23m0302:481620:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+[1753969463.720631] [n23m0302:481619:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969463.720631] [n23m0302:481619:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+==== backtrace (tid: 481905) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1515d07dfe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1515d07ddb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1515d07ddbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x1515d0860008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x1515d1236596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x1515d1236880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x1515d111637a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x1515d3799702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x1515d0b534a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x1515d0d221f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x1515d0da289c]
+=================================
+==== backtrace (tid: 481904) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x152ed8b56e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x152ed8b54b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x152ed8b54bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x152ed8bd7008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x152ed95ad596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x152ed95ad880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x152ed948d37a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x152edbb10702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x152ed8eca4a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x152ed90991f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x152ed911989c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 481620 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,26 @@
+[n23m0302:1179729:0:1179729]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1179729:1:1179934]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid:1179729) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14c74d663e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14c74d661b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14c74d661bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14c74d6e4038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14c74e0b94eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14c74e0bcf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14c74e085c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14c74e086146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14c74dffda2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14c74e0745d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14c74e0747ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14c74e075181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14c74df1e0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14c75061dc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14c7506208ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufread-001.c-instrumented.exe(+0x1417) [0x5593948ba417]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14c74db4424a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14c74db44305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufread-001.c-instrumented.exe(+0x1131) [0x5593948ba131]
+=================================
+Error when inserting memory access of type LOCAL_READ from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufread-001.c:46 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufread-001.c:44.
+The program will be exiting now with MPI_Abort.
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0

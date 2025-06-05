@@ -1,0 +1,7 @@
+[n23m0302:484343:0:484343]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:484343:1:484804]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969466.357483] [n23m0302:484343:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969466.357486] [n23m0302:484343:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+Error when inserting memory access of type LOCAL_WRITE from file cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/032-MPI-static-get-store-same-array-local-yes.c:44 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/032-MPI-static-get-store-same-array-local-yes.c:42.
+The program will be exiting now with MPI_Abort.
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0

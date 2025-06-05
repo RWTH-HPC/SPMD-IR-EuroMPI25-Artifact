@@ -1,0 +1,17 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.h0GR86zcG3"!
+[MUST] Using prebuilt infrastructure at /opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/opt/rmasanitizer/modules/prebuilds/dd3dc15ec93989ca88e2155a5c3c2d31" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Note: MPI RMA support requires the application to be built with Clang >= 15.Note: MPI RMA support requires the application to be built with Clang >= 15.Executing application:
+[MUST-RUNTIME] Could not find location for vector clock value 0
+[MUST-RUNTIME] Could not find location for vector clock value 0
+[MUST-RUNTIME] Could not find location for vector clock value 0
+[MUST-REPORT] Error: from: call MPI_Win_lock@0: The provided lock type (234) for MPI_Win_lock is invalid.
+[MUST-REPORT] Error: from: call MPI_Win_lock@0: The provided lock type (234) for MPI_Win_lock is invalid.
+Rank 1 finished normally
+Rank 0 finished normally
+[MUST] Execution finished.

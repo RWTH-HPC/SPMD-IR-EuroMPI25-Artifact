@@ -1,0 +1,73 @@
+                                                           discipline SPMDIR
+001-nvshmem-conflict-putnbi-load-local-no.cu                 conflict     TN
+002-nvshmem-conflict-putnbi-store-local-yes.cu               conflict     TP
+003-nvshmem-conflict-putnbi-putnbi-local-no.cu               conflict     TN
+004-nvshmem-conflict-getnbi-load-local-yes.cu                conflict     TP
+005-nvshmem-conflict-getnbi-store-local-yes.cu               conflict     TP
+006-nvshmem-conflict-getnbi-putnbi-local-yes.cu              conflict     TP
+007-nvshmem-conflict-getnbi-getnbi-local-yes.cu              conflict     TP
+008-nvshmem-conflict-put_signal_nbi-store-local-yes.cu       conflict     TP
+009-nvshmem-conflict-put_signal_nbi-load-local-no.cu         conflict     TN
+050-nvshmem-conflict-putnbi-putnbi-same-array-local-no.cu    conflict     TN
+001-nvshmem-sync-barrierall-local-yes.cu                         sync     TP
+002-nvshmem-sync-barrierall-local-no.cu                          sync     TN
+003-nvshmem-sync-quiet-local-yes.cu                              sync     TP
+004-nvshmem-sync-quiet-local-no.cu                               sync     TN
+005-nvshmem-sync-waituntil-local-no.cu                           sync     FP
+006-nvshmem-sync-waituntil-local-yes.cu                          sync     TP
+001-nvshmem-static-putnbi-load-deep-nesting-local-no.cu        static     TN
+002-nvshmem-static-putnbi-load-aliasing-local-no.cu            static     TN
+003-nvshmem-static-putnbi-load-retval-local-no.cu              static     TN
+004-nvshmem-static-putnbi-load-memcpy-local-no.cu              static     TN
+005-nvshmem-static-getnbi-load-deep-nesting-local-yes.cu       static     TP
+006-nvshmem-static-getnbi-load-aliasing-local-yes.cu           static     TP
+007-nvshmem-static-putnbi-load-retval-local-yes.cu             static     TP
+008-nvshmem-static-getnbi-load-memcpy-local-yes.cu             static     TP
+031-nvshmem-static-getnbi-store-same-array-local-no.cu         static     FP
+032-nvshmem-static-getnbi-store-same-array-local-yes.cu        static     TP
+033-nvshmem-static-getnbi-getnbi-same-array-local-yes.cu       static     TP
+034-nvshmem-static-getnbi-getnbi-same-array-local-no.cu        static     FP
+035-nvshmem-static-index-loop-local-no.cu                      static     FP
+036-nvshmem-static-index-loop-local-yes.cu                     static     TP
+037-nvshmem-static-loop-array-bounds-local-yes.cu              static     TP
+038-nvshmem-static-loop-array-bounds-local-no.cu               static     FP
+039-nvshmem-static-mv-local-yes.cu                             static     TP
+040-nvshmem-static-mv-local-no.cu                              static     TN
+001-nvshmem-dynamic-putnbi-store-impossible-local-yes.cu      dynamic     TP
+002-nvshmem-dynamic-putnbi-store-local-yes.cu                 dynamic     TP
+003-nvshmem-dynamic-while-local-no.cu                         dynamic     TN
+004-nvshmem-dynamic-getnbi-loop-local-yes.cu                  dynamic     TP
+005-nvshmem-dynamic-getnbi-loop-impossible-local-yes.cu       dynamic     TP
+006-nvshmem-dynamic-getnbi-loop-local-no.cu                   dynamic     TN
+009-nvshmem-coll-getnbi-reduce-local-yes.cu                rma+nonrma     TP
+010-nvshmem-coll-putnbi-broadcast-local-no.cu              rma+nonrma     TN
+011-nvshmem-coll-getnbi-broadcast-local-yes.cu             rma+nonrma     TP
+012-nvshmem-coll-putnbi-reduce-local-yes.cu                rma+nonrma     TP
+013-nvshmem-coll-putnbi-reduce-quiet-local-no.cu           rma+nonrma     TN
+
+           SPMDIR                               
+               TP  TN FP FN TO CR    P    R    A
+conflict        6   4  0  0  0  0 1.00 1.00 1.00
+sync            3   2  1  0  0  0 0.75 1.00 0.83
+static          9   5  4  0  0  0 0.69 1.00 0.78
+dynamic         4   2  0  0  0  0 1.00 1.00 1.00
+rma+nonrma      3   2  0  0  0  0 1.00 1.00 1.00
+total          25  15  5  0  0  0 0.83 1.00 0.89
+=== conflict ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   6   4   0   0   0   0 1.00 1.00 1.00
+=== sync ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   3   2   1   0   0   0 0.75 1.00 0.83
+=== static ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   9   5   4   0   0   0 0.69 1.00 0.78
+=== dynamic ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   4   2   0   0   0   0 1.00 1.00 1.00
+=== rma+nonrma ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR   3   2   0   0   0   0 1.00 1.00 1.00
+=== Total ===
+        TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR  25  15   5   0   0   0 0.83 1.00 0.89

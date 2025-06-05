@@ -1,0 +1,53 @@
+[n23m0302:965857:0:965857]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:965857:1:966339]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970016.454381] [n23m0302:965857:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970016.454383] [n23m0302:965857:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[n23m0302:965856:0:965856]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:965856:1:966338]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753970016.454428] [n23m0302:965856:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753970016.454441] [n23m0302:965856:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+[1753970016.454447] [n23m0302:965856:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 4 was not set in ucs
+[1753970016.454449] [n23m0302:965856:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid: 965856) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14ec0ba5be9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14ec0ba59b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14ec0ba59bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x14ec0badc008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_flush_local_all+0x81a) [0x14ec0c3c454a]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x140e) [0x55ffdb9a140e]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14ec0bf3c24a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14ec0bf3c305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x1141) [0x55ffdb9a1141]
+=================================
+==== backtrace (tid: 965857) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x154cd952fe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x154cd952db06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x154cd952dbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x154cd95b0038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x154cd9f854eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x154cd9f88f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x154cd9f51c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x154cd9f52146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x154cd9ec9a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x154cd9f405d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x154cd9f407ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x154cd9f41181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x154cd9dea0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x154cdc4e9c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x154cdc4ec8ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x147e) [0x56480337047e]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x154cd9a1024a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x154cd9a10305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-fetch_and_op_bufwrite-001.c-instrumented.exe(+0x1141) [0x564803370141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 965856 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:78:9: warning: memset operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+        cudaMemset(localbuf_d, 1337, sizeof(int));
+        ^
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:78:9: note: see current operation: %48 = "spmd.memset"(%address_4, %c1337_i32, %c4_i64) <{usedModel = 4 : i32}> {spmd.executionKind = "All"} : (!llvm.ptr, i32, i64) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:16:5: warning: putSignal operation/call
+    nvshmem_int_put_signal_nbi(remote, localbuf, 1, flag, 1, NVSHMEM_SIGNAL_SET, 1);
+    ^
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:16:5: note: see current operation: %error_11 = "spmd.putSignal"(%address_4, %c1_i64, %16, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %16, %c1_i64, %win_9, %c1_i64, %15) <{isAtomic = true, isBlocking = true, usedModel = 2 : i32}> {spmd.executionKind = "All"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64, !spmd.win, i64, !spmd.signalOp) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %address_4
+Previous Access on: %address_4
+
+
+On the orignal value:
+Operand: %address_4
+
+
+Defined by:
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:54:30: warning: malloc
+    int *localbuf_d = (int *)nvshmem_malloc(sizeof(int));
+                             ^
+cq-results-20250731-154348/RRB/NVSHMEM-hybridInitiated/SPMDIR/sync/005-nvshmem-sync-waituntil-local-no.cu:54:30: note: see current operation: %address_4, %error_5 = "spmd.malloc"(%17, %c4_i64) <{usedModel = 2 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

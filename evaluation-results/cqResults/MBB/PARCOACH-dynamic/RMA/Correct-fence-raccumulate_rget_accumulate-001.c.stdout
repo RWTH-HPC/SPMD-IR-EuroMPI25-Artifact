@@ -1,0 +1,48 @@
+Assertion failed in file ./src/mpid/ch4/src/ch4_impl.h at line 740: *(&(((win)->dev.am).remote_cmpl_cnts)) >= 0
+[n23m0302:905496:0:905693]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x30c7c5) [0x14e3b86567c5]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2a3dd4) [0x14e3b85eddd4]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2ed4f0) [0x14e3b86374f0]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2fa2a5) [0x14e3b86442a5]
+/lib/x86_64-linux-gnu/libucp.so.0(ucp_am_handler+0x34d) [0x14e3b7be100d]
+/lib/x86_64-linux-gnu/libuct.so.0(+0x18502) [0x14e3b7b07502]
+/lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x72) [0x14e3b7c07ef2]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14e3b85dd4eb]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14e3b85e0f5e]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14e3b85a9c70]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x260a85) [0x14e3b85aaa85]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x1c9d57) [0x14e3b8513d57]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x23d93b) [0x14e3b858793b]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x23da13) [0x14e3b8587a13]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x23eab8) [0x14e3b8588ab8]
+/lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_fence+0x5df) [0x14e3b84ecf4f]
+/opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x31) [0x14e3bab43541]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-raccumulate_rget_accumulate-001.c-instrumented.exe(+0x14e2) [0x56249276f4e2]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14e3b806824a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14e3b8068305]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-raccumulate_rget_accumulate-001.c-instrumented.exe(+0x1141) [0x56249276f141]
+Abort(1) on node 0: Internal error
+==== backtrace (tid: 905693) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1472b776fe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1472b776db06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1472b776dbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x1472b77f0038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x1472b81c6596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x1472b81c6880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x1472b80a637a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x1472ba729702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x1472b7ae34a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x1472b7cb21f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x1472b7d3289c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 905496 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

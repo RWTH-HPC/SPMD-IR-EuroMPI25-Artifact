@@ -1,0 +1,52 @@
+[n23m0302:986407:0:986407]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:986407:1:986724]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970030.270324] [n23m0302:986407:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753970030.270335] [n23m0302:986407:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+[1753970030.270340] [n23m0302:986407:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970030.270340] [n23m0302:986407:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 11 was not set in ucs
+Assertion failed in file ./src/mpid/ch4/src/ch4_request.h at line 79: *(&incomplete) >= 0
+==== backtrace (tid: 986407) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14b49183be9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14b491839b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14b491839bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14b4918bc038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14b4922914eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14b492294f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14b49225dc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14b49225e146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14b4921d5a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14b49224c5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14b49224c7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14b49224d181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14b4920f60cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14b4947f5c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14b4947f88ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-compare_and_swap_accumulate-001.c-instrumented.exe(+0x1500) [0x55b9299f1500]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14b491d1c24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14b491d1c305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-compare_and_swap_accumulate-001.c-instrumented.exe(+0x1141) [0x55b9299f1141]
+=================================
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x30c7c5) [0x1492f8e547c5]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2a3dd4) [0x1492f8debdd4]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x2ec988) [0x1492f8e34988]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x178ece) [0x1492f8cc0ece]
+/lib/x86_64-linux-gnu/libmpich.so.12(+0x179521) [0x1492f8cc1521]
+/lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Accumulate+0x9cf) [0x1492f8cc2e9f]
+/opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Accumulate+0x541) [0x1492fb3427a1]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-compare_and_swap_accumulate-001.c-instrumented.exe(+0x14d2) [0x55ffb66a04d2]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1492f886624a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1492f8866305]
+/rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-compare_and_swap_accumulate-001.c-instrumented.exe(+0x1141) [0x55ffb66a0141]
+Abort(1) on node 0: Internal error
+terminate called without an active exception
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 986407 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

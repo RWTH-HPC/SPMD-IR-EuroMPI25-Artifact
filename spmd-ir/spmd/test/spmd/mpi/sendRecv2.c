@@ -1,0 +1,33 @@
+/*
+ * SPDX-FileCopyrightText: 2025 Semih Burak, RWTH Aachen University
+ *
+ * SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
+ */
+
+#include <mpi.h>
+
+int main(int argc, char *argv[]) {
+  int myRank, size;
+  int sendData;
+  int recvData;
+
+  MPI_Init(&argc, &argv);
+  MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
+  MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+  if(size!=2){
+    MPI_Finalize();
+    return 1;
+  }
+
+  if (myRank == 0) {
+    sendData = 10;
+  }
+
+  if (myRank == 0 || myRank == 1){
+    MPI_Sendrecv(&sendData, 1, MPI_INT, 1, 0, &recvData, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+  }
+
+  MPI_Finalize();
+  return 0;
+}

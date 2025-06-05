@@ -1,0 +1,7 @@
+value is 0
+Process 0: Execution finished, variable contents: value = 0, value2 = 2, win_base[0] = 0
+PARCOACH: stopping RMA analyzer, no issues found.
+Process 1: Execution finished, variable contents: value = 1, value2 = 2, win_base[0] = 0
+PARCOACH: stopping RMA analyzer, no issues found.
+[1753969460.415082] [n23m0302:477376:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55f069538040 was not matched
+[1753969460.415090] [n23m0302:477376:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x14a255099bc0 was not matched

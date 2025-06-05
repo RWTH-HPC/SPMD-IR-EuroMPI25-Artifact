@@ -1,0 +1,37 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/009-MPI-coll-get-reduce-local-yes.c:42:5: warning: reduce operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+    MPI_Reduce(&value2, &value, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+    ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/009-MPI-coll-get-reduce-local-yes.c:42:5: note: see current operation: %error_2 = "spmd.reduce"(%2, %12, %11, %c1_i64, %3, %4, %c0_i32) <{isBlocking = true, usedModel = 0 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, !llvm.ptr, !llvm.ptr, i64, !spmd.datatype, !spmd.op, i32) -> !spmd.error
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/009-MPI-coll-get-reduce-local-yes.c:39:9: warning: get operation/call
+        MPI_Get(&value, 1, MPI_INT, 1, 0, 1, MPI_INT, win);
+        ^
+cq-results-20250731-154348/RRB/MPIRMA/SPMDIR/rma+nonrma/009-MPI-coll-get-reduce-local-yes.c:39:9: note: see current operation: %error_4 = "spmd.get"(%11, %c1_i64, %3, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %3, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %11
+Previous Access on: %11
+
+
+On the orignal value:
+Operand: %11
+
+
+Defined by:
+<unknown>:0: warning: alloca
+<unknown>:0: note: see current operation: %11 = llvm.alloca %c1_i32 x i32 {alignment = 4 : i64, spmd.executionKind = "All"} : (i32) -> !llvm.ptr
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

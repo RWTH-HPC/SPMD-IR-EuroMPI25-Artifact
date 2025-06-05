@@ -1,0 +1,45 @@
+[n23m0302:489420:0:489420]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:489420:1:489514]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:489421:0:489421]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:489421:1:489515]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969472.213165] [n23m0302:489420:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969472.213168] [n23m0302:489420:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+==== backtrace (tid: 489420) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x153f66a19e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x153f66a17b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x153f66a17bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x153f66a9a008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x153f6746f4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2977d5) [0x153f674737d5]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x297c62) [0x153f67473c62]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Waitall+0xdd) [0x153f6735219d]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/014-MPI-coll-get-ibroadcast-waitall-local-no.c-instrumented.exe(+0x1392) [0x55a7ade48392]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x153f66efa24a]
+10  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x153f66efa305]
+11  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/014-MPI-coll-get-ibroadcast-waitall-local-no.c-instrumented.exe(+0x1151) [0x55a7ade48151]
+=================================
+==== backtrace (tid: 489421) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x148957530e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14895752eb06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14895752ebf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x1489575b1008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x148957f864eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2977d5) [0x148957f8a7d5]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x297c62) [0x148957f8ac62]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Waitall+0xdd) [0x148957e6919d]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/014-MPI-coll-get-ibroadcast-waitall-local-no.c-instrumented.exe(+0x1392) [0x559115360392]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x148957a1124a]
+10  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x148957a11305]
+11  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/014-MPI-coll-get-ibroadcast-waitall-local-no.c-instrumented.exe(+0x1151) [0x559115360151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 489420 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

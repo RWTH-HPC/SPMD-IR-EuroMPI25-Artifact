@@ -1,0 +1,143 @@
+rm -f stencil.o MPI_bail_out.o wtime.o  stencil *.optrpt *~ charmrun stats.json stencil.decl.h stencil.def.h *.bc *.mlir
+/opt/spmdir/bin/clang -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/opt/spmdir/includesProgramModels/mpi/include -I../../include -c stencil.c
+In file included from stencil.c:71:
+../../include/par-res-kern_general.h:190:12: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  190 |   cost_opt=INT_MAX;
+      |           ~^~~~~~~
+/opt/spmdir/lib/clang/20/include/limits.h:50:19: note: expanded from macro 'INT_MAX'
+   50 | #define INT_MAX   __INT_MAX__
+      |                   ^~~~~~~~~~~
+<built-in>:60:21: note: expanded from macro '__INT_MAX__'
+   60 | #define __INT_MAX__ 2147483647
+      |                     ^~~~~~~~~~
+1 warning generated.
+/opt/spmdir/bin/clang -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/opt/spmdir/includesProgramModels/mpi/include -I../../include -c ../../common/MPI_bail_out.c
+In file included from ../../common/MPI_bail_out.c:50:
+../../include/par-res-kern_general.h:190:12: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  190 |   cost_opt=INT_MAX;
+      |           ~^~~~~~~
+/opt/spmdir/lib/clang/20/include/limits.h:50:19: note: expanded from macro 'INT_MAX'
+   50 | #define INT_MAX   __INT_MAX__
+      |                   ^~~~~~~~~~~
+<built-in>:60:21: note: expanded from macro '__INT_MAX__'
+   60 | #define __INT_MAX__ 2147483647
+      |                     ^~~~~~~~~~
+1 warning generated.
+/opt/spmdir/bin/clang -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/opt/spmdir/includesProgramModels/mpi/include -I../../include -c ../../common/wtime.c
+/opt/spmdir/bin/clang -o stencil.bc  -fuse-ld=lld -Wl,--lto-emit-llvm stencil.o MPI_bail_out.o wtime.o  -lm
+/opt/spmdir/bin/spmd-verify check-dataRace emitSPMDIR time stencil.bc
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+stencil.c:381:29: warning: store operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+          left_buf_out[kk++]= IN(i,j);
+                            ^
+stencil.c:381:29: note: see current operation: llvm.store %303, %304 {alignment = 8 : i64, spmd.executionKind = "Dynamic", tbaa = [#llvm.tbaa_tag<base_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, access_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, offset = 0>]} : f64, !llvm.ptr
+
+
+Previous operation:
+
+stencil.c:376:7: warning: put operation/call
+      MPI_Put(right_buf_out, RADIUS*height, MPI_DTYPE, right_nbr,
+      ^
+stencil.c:376:7: note: see current operation: %error_17 = "spmd.put"(%baseAddress_10, %286, %41, %c1_i64, %99, %win_11, %228, %287, %41, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executionKind = "Dynamic"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %304
+Previous Access on: %baseAddress_10
+
+
+On the orignal value:
+Operand: %baseAddress_10
+
+
+Defined by:
+../../include/par-res-kern_mpi.h:74:12: warning: winAlloc
+    return MPI_Win_allocate(size, disp_unit, info, comm, baseptr, win);
+           ^
+stencil.c:324:3: note: called from
+  PRK_Win_allocate(4*sizeof(DTYPE)*RADIUS*height, sizeof(DTYPE), rma_winfo, MPI_COMM_WORLD, (void *) &right_buf_out, &rma_winx);
+  ^
+../../include/par-res-kern_mpi.h:74:12: note: see current operation: %baseAddress_10, %win_11, %error_12 = "spmd.winAlloc"(%44, %214, %c8_i32) <{usedModel = 0 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64, i32) -> (!llvm.ptr, !spmd.win, !spmd.error)
+    return MPI_Win_allocate(size, disp_unit, info, comm, baseptr, win);
+           ^
+
+--------------------------------------------------------------------------------------------------------------
+
+stencil.c:353:31: warning: store operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+          bottom_buf_out[kk++]= IN(i,j);
+                              ^
+stencil.c:353:31: note: see current operation: llvm.store %301, %302 {alignment = 8 : i64, spmd.executionKind = "Dynamic", tbaa = [#llvm.tbaa_tag<base_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, access_type = <id = "double", members = {<#llvm.tbaa_type_desc<id = "omnipotent char", members = {<#llvm.tbaa_root<id = "Simple C/C++ TBAA">, 0>}>, 0>}>, offset = 0>]} : f64, !llvm.ptr
+
+
+Previous operation:
+
+stencil.c:348:7: warning: put operation/call
+      MPI_Put(top_buf_out, RADIUS*width, MPI_DTYPE, top_nbr,
+      ^
+stencil.c:348:7: note: see current operation: %error_17 = "spmd.put"(%baseAddress, %287, %41, %c1_i64, %101, %win, %212, %288, %41, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executionKind = "Dynamic"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+
+
+With the alias values:
+Causing Access on: %302
+Previous Access on: %baseAddress
+
+
+On the orignal value:
+Operand: %baseAddress
+
+
+Defined by:
+../../include/par-res-kern_mpi.h:74:12: warning: winAlloc
+    return MPI_Win_allocate(size, disp_unit, info, comm, baseptr, win);
+           ^
+stencil.c:314:3: note: called from
+  PRK_Win_allocate(4*sizeof(DTYPE)*RADIUS*width, sizeof(DTYPE), rma_winfo, MPI_COMM_WORLD, (void *) &top_buf_out, &rma_winy);
+  ^
+../../include/par-res-kern_mpi.h:74:12: note: see current operation: %baseAddress, %win, %error_8 = "spmd.winAlloc"(%44, %198, %c8_i32) <{usedModel = 0 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64, i32) -> (!llvm.ptr, !spmd.win, !spmd.error)
+    return MPI_Win_allocate(size, disp_unit, info, comm, baseptr, win);
+           ^
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+===-------------------------------------------------------------------------===
+                         ... Execution time report ...
+===-------------------------------------------------------------------------===
+  Total Execution Time: 0.1071 seconds
+
+  ----Wall Time----  ----Name----
+    0.0198 ( 18.5%)  Parser
+    0.0027 (  2.5%)  PrepareLLVMFuncInline
+    0.0042 (  4.0%)  Inliner
+    0.0001 (  0.1%)    (A) CallGraph
+    0.0021 (  2.0%)  'llvm.func' Pipeline
+    0.0021 (  2.0%)    Canonicalizer
+    0.0010 (  1.0%)  CSE
+    0.0000 (  0.0%)    (A) DominanceInfo
+    0.0013 (  1.2%)  Mem2Reg
+    0.0000 (  0.0%)    (A) DataLayoutAnalysis
+    0.0014 (  1.4%)  Canonicalizer
+    0.0006 (  0.5%)  InlineGPULaunchFuncs
+    0.0100 (  9.3%)  DeleteInlinedFuncs
+    0.0020 (  1.9%)  HandleLLVMUnreachable
+    0.0013 (  1.2%)  Canonicalizer
+    0.0029 (  2.7%)  LiftControlFlowToSCFPass
+    0.0000 (  0.0%)    (A) DominanceInfo
+    0.0043 (  4.0%)  Canonicalizer
+    0.0051 (  4.7%)  PromoteScfWhilePass
+    0.0016 (  1.5%)  Canonicalizer
+    0.0059 (  5.5%)  ConvertApiCallsToSPMD
+    0.0015 (  1.4%)  SimplifyCmpOps
+    0.0222 ( 20.8%)  MultiValueAnalysis
+    0.0000 (  0.0%)    (A) AliasAnalysis
+    0.0100 (  9.3%)  CheckDataRace
+    0.0071 (  6.6%)  Rest
+    0.1071 (100.0%)  Total
+make: *** [../../common/make.common:17: stencil] Error 1
+Command (make stencil) took time (us): 3393097

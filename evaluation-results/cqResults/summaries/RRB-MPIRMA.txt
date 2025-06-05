@@ -1,0 +1,119 @@
+                                                  discipline SPMDIR PARCOACH-static PARCOACH-dynamic RMASanitizer-NoOpt
+001-MPI-conflict-put-load-local-no.c                conflict     TN              TN               TN                 TN
+002-MPI-conflict-put-store-local-yes.c              conflict     TP              TP               TP                 TP
+003-MPI-conflict-put-put-local-no.c                 conflict     TN              TN               TN                 TN
+004-MPI-conflict-get-load-local-yes.c               conflict     TP              TP               TP                 TP
+005-MPI-conflict-get-store-local-yes.c              conflict     TP              TP               TP                 TP
+006-MPI-conflict-get-put-local-yes.c                conflict     TP              TP               TP                 TP
+007-MPI-conflict-get-get-local-yes.c                conflict     TP              TP               TP                 TP
+008-MPI-conflict-acc-store-local-yes.c              conflict     TP              FN               TP                 TP
+009-MPI-conflict-acc-load-local-no.c                conflict     TN              TN               TN                 TN
+010-MPI-conflict-gacc-store-local-yes.c             conflict     TP              FN               FN                 TP
+011-MPI-conflict-gacc-load-local-yes.c              conflict     TP              FN               FN                 TP
+012-MPI-conflict-fop-store-local-yes.c              conflict     TP              FN               FN                 TP
+013-MPI-conflict-fop-load-local-yes.c               conflict     TP              FN               FN                 TP
+014-MPI-conflict-cas-store-local-yes.c              conflict     TP              FN               FN                 TP
+015-MPI-conflict-cas-load-local-yes.c               conflict     TP              FN               FN                 TP
+001-MPI-sync-fence-local-yes.c                          sync     TP              TP               TP                 TP
+002-MPI-sync-fence-local-no.c                           sync     TN              TN               TN                 TN
+003-MPI-sync-lock-local-yes.c                           sync     TP              TP               FN                 TP
+004-MPI-sync-lock-local-no.c                            sync     TN              FP               TN                 TN
+005-MPI-sync-lock-flush-local-yes.c                     sync     TP              TP               FN                 TP
+006-MPI-sync-lock-flush-local-no.c                      sync     TN              TN               TN                 TN
+007-MPI-sync-lockall-flushlocalall-local-yes.c          sync     TP              TP               TP                 TP
+008-MPI-sync-lockall-flushlocalall-local-no.c           sync     TN              FP               TN                 TN
+009-MPI-sync-request-local-yes.c                        sync     TP              FN               FN                 TP
+010-MPI-sync-request-local-no.c                         sync     TN              TN               TN                 TN
+011-MPI-sync-pscw-local-yes.c                           sync     TP              TP               FN                 TP
+012-MPI-sync-pscw-local-no.c                            sync     TN              FP               TN                 TN
+001-MPI-static-put-load-deep-nesting-local-no.c       static     TN              TN               TN                 TN
+002-MPI-static-get-load-deep-nesting-local-yes.c      static     TP              FN               FN                 TP
+003-MPI-static-put-load-aliasing-local-no.c           static     TN              TN               TN                 TN
+004-MPI-static-get-load-aliasing-local-yes.c          static     TP              TP               TP                 TP
+005-MPI-static-put-load-retval-local-no.c             static     TN              TN               TN                 TN
+006-MPI-static-get-load-retval-local-yes.c            static     TP              TP               TP                 TP
+007-MPI-static-put-load-memcpy-local-no.c             static     TN              TN               TN                 TN
+008-MPI-static-get-load-memcpy-local-yes.c            static     TP              TP               TP                 TP
+019-MPI-static-get-get-recursive-local-yes.c          static     TP              FN               TP                 TP
+020-MPI-static-get-get-recursive-local-no.c           static     FP              TN               TN                 TN
+021-MPI-static-win-in-array-local-yes.c               static     FN              TP               FN                 TP
+022-MPI-static-win-in-array-local-no.c                static     TN              FP               TN                 TN
+025-MPI-static-mult-win-local-yes.c                   static     TP              TP               FN                 TP
+026-MPI-static-mult-win-local-no.c                    static     TN              FP               TN                 TN
+027-MPI-static-mult-win-fence-local-yes.c             static     TP              TP               FN                 TP
+028-MPI-static-mult-win-fence-local-no.c              static     TN              FP               TN                 TN
+029-MPI-static-flush-multiple-wins-local-yes.c        static     TP              FN               FN                 TP
+030-MPI-static-flush-multiple-wins-local-no.c         static     TN              FP               TN                 TN
+031-MPI-static-get-store-same-array-local-no.c        static     FP              FP               TN                 TN
+032-MPI-static-get-store-same-array-local-yes.c       static     TP              TP               TP                 TP
+033-MPI-static-get-get-same-array-local-yes.c         static     TP              TP               TP                 TP
+034-MPI-static-get-get-same-array-local-no.c          static     FP              FP               TN                 TN
+035-MPI-static-index-loop-local-no.c                  static     FP              FP               TN                 TN
+036-MPI-static-index-loop-local-yes.c                 static     TP              TP               TP                 TP
+037-MPI-static-loop-array-bounds-local-yes.c          static     TP              TP               TP                 TP
+038-MPI-static-loop-array-bounds-local-no.c           static     FP              FP               TN                 TN
+039-MPI-static-mv-local-yes.c                         static     TP              TP               TP                 TP
+040-MPI-static-mv-local-no.c                          static     TN              FP               TN                 TN
+001-MPI-dynamic-put-store-impossible-local-yes.c     dynamic     TP              TP               FN                 FN
+002-MPI-dynamic-put-store-local-yes.c                dynamic     TP              TP               TP                 TP
+003-MPI-dynamic-get-loop-local-yes.c                 dynamic     TP              TP               TP                 TP
+004-MPI-dynamic-while-local-no.c                     dynamic     TN              TN               FP                 TN
+005-MPI-dynamic-get-loop-impossible-local-yes.c      dynamic     TP              TP               FN                 FN
+006-MPI-dynamic-get-loop-local-no.c                  dynamic     TN              TN               TN                 TN
+007-MPI-dynamic-win-in-array-local-yes.c             dynamic     FN              TP               FN                 TP
+008-MPI-dynamic-win-in-array-local-no.c              dynamic     TN              FP               TN                 TN
+001-MPI-p2p-get-recv-local-yes.c                  rma+nonrma     TP              FN               FN                 TP
+002-MPI-p2p-put-send-local-no.c                   rma+nonrma     TN              TN               TN                 TN
+003-MPI-p2p-put-irecv-local-yes.c                 rma+nonrma     TP              FN               FN                 TP
+004-MPI-p2p-get-isend-local-no.c                  rma+nonrma     TN              TN               TN                 TN
+009-MPI-coll-get-reduce-local-yes.c               rma+nonrma     TP              FN               FN                 TP
+010-MPI-coll-put-allreduce-local-no.c             rma+nonrma     TN              TN               TN                 TN
+011-MPI-coll-get-broadcast-local-yes.c            rma+nonrma     TP              FN               FN                 TP
+012-MPI-coll-put-ireduce-local-yes.c              rma+nonrma     TP              FN               FN                 TP
+013-MPI-coll-put-ireduce-wait-local-no.c          rma+nonrma     TN              TN               TN                 TN
+014-MPI-coll-get-ibroadcast-waitall-local-no.c    rma+nonrma     TN              TN               TN                 TN
+
+           SPMDIR                                PARCOACH-static                                  PARCOACH-dynamic                                 RMASanitizer-NoOpt                               
+               TP  TN FP FN TO CR    P    R    A              TP  TN  FP  FN TO CR    P    R    A               TP  TN FP  FN TO CR    P    R    A                 TP  TN FP FN TO CR    P    R    A
+conflict       12   3  0  0  0  0 1.00 1.00 1.00               5   3   0   7  0  0 1.00 0.42 0.53                6   3  0   6  0  0 1.00 0.50 0.60                 12   3  0  0  0  0 1.00 1.00 1.00
+sync            6   6  0  0  0  0 1.00 1.00 1.00               5   3   3   1  0  0 0.62 0.83 0.67                2   6  0   4  0  0 1.00 0.33 0.67                  6   6  0  0  0  0 1.00 1.00 1.00
+static         13   9  5  1  0  0 0.72 0.93 0.79              11   5   9   3  0  0 0.55 0.79 0.57                9  14  0   5  0  0 1.00 0.64 0.82                 14  14  0  0  0  0 1.00 1.00 1.00
+dynamic         4   3  0  1  0  0 1.00 0.80 0.88               5   2   1   0  0  0 0.83 1.00 0.88                2   2  1   3  0  0 0.67 0.40 0.50                  3   3  0  2  0  0 1.00 0.60 0.75
+rma+nonrma      5   5  0  0  0  0 1.00 1.00 1.00               0   5   0   5  0  0 0.00 0.00 0.50                0   5  0   5  0  0 0.00 0.00 0.50                  5   5  0  0  0  0 1.00 1.00 1.00
+total          40  26  5  2  0  0 0.89 0.95 0.90              26  18  13  16  0  0 0.67 0.62 0.60               19  30  1  23  0  0 0.95 0.45 0.67                 40  31  0  2  0  0 1.00 0.95 0.97
+=== conflict ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR              12   3   0   0   0   0 1.00 1.00 1.00
+PARCOACH-static      5   3   0   7   0   0 1.00 0.42 0.53
+PARCOACH-dynamic     6   3   0   6   0   0 1.00 0.50 0.60
+RMASanitizer-NoOpt  12   3   0   0   0   0 1.00 1.00 1.00
+=== sync ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR               6   6   0   0   0   0 1.00 1.00 1.00
+PARCOACH-static      5   3   3   1   0   0 0.62 0.83 0.67
+PARCOACH-dynamic     2   6   0   4   0   0 1.00 0.33 0.67
+RMASanitizer-NoOpt   6   6   0   0   0   0 1.00 1.00 1.00
+=== static ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR              13   9   5   1   0   0 0.72 0.93 0.79
+PARCOACH-static     11   5   9   3   0   0 0.55 0.79 0.57
+PARCOACH-dynamic     9  14   0   5   0   0 1.00 0.64 0.82
+RMASanitizer-NoOpt  14  14   0   0   0   0 1.00 1.00 1.00
+=== dynamic ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR               4   3   0   1   0   0 1.00 0.80 0.88
+PARCOACH-static      5   2   1   0   0   0 0.83 1.00 0.88
+PARCOACH-dynamic     2   2   1   3   0   0 0.67 0.40 0.50
+RMASanitizer-NoOpt   3   3   0   2   0   0 1.00 0.60 0.75
+=== rma+nonrma ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR               5   5   0   0   0   0 1.00 1.00 1.00
+PARCOACH-static      0   5   0   5   0   0 0.00 0.00 0.50
+PARCOACH-dynamic     0   5   0   5   0   0 0.00 0.00 0.50
+RMASanitizer-NoOpt   5   5   0   0   0   0 1.00 1.00 1.00
+=== Total ===
+                    TP  TN  FP  FN  TO  CR    P    R    A
+SPMDIR              40  26   5   2   0   0 0.89 0.95 0.90
+PARCOACH-static     26  18  13  16   0   0 0.67 0.62 0.60
+PARCOACH-dynamic    19  30   1  23   0   0 0.95 0.45 0.67
+RMASanitizer-NoOpt  40  31   0   2   0   0 1.00 0.95 0.97

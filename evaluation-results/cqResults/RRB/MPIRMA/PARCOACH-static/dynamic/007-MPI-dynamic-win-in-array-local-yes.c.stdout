@@ -1,0 +1,24 @@
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  %74 = load i32, ptr %73, align 4, !dbg !114 - LINE 41 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/dynamic/007-MPI-dynamic-win-in-array-local-yes.c
+AND
+  %70 = call i32 @MPI_Get(ptr noundef %65, i32 noundef %66, i32 noundef 1275069445, i32 noundef 1, i64 noundef 0, i32 noundef %67, i32 noundef 1275069445, i32 noundef %69), !dbg !112 - LINE 40 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/dynamic/007-MPI-dynamic-win-in-array-local-yes.c
+LocalConcurrency detected: conflit with the following instructions: 
+  %95 = load i32, ptr %94, align 4, !dbg !129 - LINE 48 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/dynamic/007-MPI-dynamic-win-in-array-local-yes.c
+AND
+  %86 = call i32 @MPI_Get(ptr noundef %76, i32 noundef %77, i32 noundef 1275069445, i32 noundef 1, i64 noundef %79, i32 noundef %80, i32 noundef 1275069445, i32 noundef %85), !dbg !123 - LINE 43 in cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-static/dynamic/007-MPI-dynamic-win-in-array-local-yes.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+14 MPI functions including 10 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 2 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 6 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 2 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 17 (/45) LOAD and 0 (/18) STORE are instrumented
+===========================

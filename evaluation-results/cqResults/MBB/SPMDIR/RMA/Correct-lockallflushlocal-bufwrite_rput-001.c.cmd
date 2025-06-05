@@ -1,0 +1,1 @@
+apptainer run --cleanenv --bind /work/rwth1282 /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/util/apptainer/spmdir.sif spmd-verify check-dataRace emitSPMDIR /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/SPMDIR/RMA/Correct-lockallflushlocal-bufwrite_rput-001.c

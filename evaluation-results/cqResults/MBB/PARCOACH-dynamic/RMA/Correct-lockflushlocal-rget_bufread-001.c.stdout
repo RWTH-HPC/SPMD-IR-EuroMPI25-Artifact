@@ -1,0 +1,27 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:1082398:0:1082398]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1082398:1:1082650]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970096.755407] [n23m0302:1082398:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970096.755405] [n23m0302:1082398:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+==== backtrace (tid:1082398) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x145f025d7e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x145f025d5b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x145f025d5bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x145f02658038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Win_flush_local+0x6e4) [0x145f02f3f5c4]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-rget_bufread-001.c-instrumented.exe(+0x13d1) [0x563a615913d1]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x145f02ab824a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x145f02ab8305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-rget_bufread-001.c-instrumented.exe(+0x1151) [0x563a61591151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1082398 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,33 @@
+PARCOACH: stopping RMA analyzer, no issues found.
+[n23m0302:1076839:0:1076839] Caught signal 11 (Segmentation fault: address not mapped to object at address 0x8)
+==== backtrace (tid:1076839) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x150ab32b4e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(+0x2908c) [0x150ab32b508c]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(+0x2923a) [0x150ab32b523a]
+ 3  /lib/x86_64-linux-gnu/libc.so.6(+0x3c050) [0x150ab37aa050]
+ 4  /lib/x86_64-linux-gnu/libucp.so.0(ucp_mem_type_pack+0x43) [0x150ab3338ce3]
+ 5  /lib/x86_64-linux-gnu/libucp.so.0(ucp_dt_pack+0x61) [0x150ab3338f21]
+ 6  /lib/x86_64-linux-gnu/libucp.so.0(+0x96df4) [0x150ab3380df4]
+ 7  /lib/x86_64-linux-gnu/libuct.so.0(uct_mm_ep_am_bcopy+0x14d) [0x150ab323658d]
+ 8  /lib/x86_64-linux-gnu/libucp.so.0(+0x96709) [0x150ab3380709]
+ 9  /lib/x86_64-linux-gnu/libucp.so.0(ucp_tag_send_nbx+0xaca) [0x150ab338f2fa]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x165426) [0x150ab3bdc426]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Send+0x503) [0x150ab3bdcd43]
+12  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_update_on_comm_send+0xea) [0x150ab626efea]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Get+0x493) [0x150ab62710a3]
+14  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-get_rget_accumulate-001.c-instrumented.exe(+0x13cf) [0x55d2fb1213cf]
+15  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x150ab379524a]
+16  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x150ab3795305]
+17  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockflushlocal-get_rget_accumulate-001.c-instrumented.exe(+0x1161) [0x55d2fb121161]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1076839 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 11
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Segmentation fault (signal 11)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,94 @@
+Bootstrap: docker
+From: debian:12
+Stage: base
+
+%arguments
+    DEBIAN_FRONTEND=noninteractive
+
+%files
+    requirements.txt /requirements.txt
+    common.sh /common.sh
+    shmem.sh /shmem.sh
+    tools/MUST-v1.10.0-rmasanitizer.tar.gz /MUST-v1.10.0-rmasanitizer.tar.gz
+
+
+%environment
+    export VIRTUAL_ENV=/opt/venv
+    export PATH="$VIRTUAL_ENV/bin:$PATH"
+    # Set Clang compiler as default and MPI compiler
+    export CC=clang
+    export CXX=clang++
+    export OMPI_CC=clang
+    export OMPI_CXX=clang++
+    export MPICH_CC=clang
+    export MPICH_CXX=clang++
+
+%post
+    # Common installation of packages and MPI
+    sh common.sh
+
+    # SHMEM installation
+    sh shmem.sh
+
+    apt-get update \
+    && apt-get -y -qq --no-install-recommends install \
+    zstd \
+    libzstd-dev \
+    clang-16 \
+    libclang-rt-16-dev \
+    libomp-16-dev \
+    clang-format-16 \
+    llvm-16 \
+    llvm-16-dev
+
+    # Ensure that LLVM 16 toolset is used
+    ln -s /usr/bin/FileCheck-16 /usr/bin/FileCheck
+    ln -s /usr/bin/clang-16 /usr/bin/clang
+    ln -s /usr/bin/clang++-16 /usr/bin/clang++
+    ln -s /usr/bin/clang-format-16 /usr/bin/clang-format
+    ln -s $(which llvm-link-16) /usr/bin/llvm-link
+    ln -s $(which opt-16) /usr/bin/opt
+    ln -s $(which llc-16) /usr/bin/llc
+
+    # Set Clang compiler as default and MPI compiler
+    export CC=clang
+    export CXX=clang++
+    export OMPI_CC=clang
+    export OMPI_CXX=clang++
+    export MPICH_CC=clang
+    export MPICH_CXX=clang++
+
+    echo "export CC=clang" >> $APPTAINER_ENVIRONMENT
+    echo "export CXX=clang++" >> $APPTAINER_ENVIRONMENT
+    echo "export OMPI_CC=clang" >> $APPTAINER_ENVIRONMENT
+    echo "export OMPI_CXX=clang++" >> $APPTAINER_ENVIRONMENT
+    echo "export MPICH_CC=clang" >> $APPTAINER_ENVIRONMENT
+    echo "export MPICH_CXX=clang++" >> $APPTAINER_ENVIRONMENT
+
+    BUILD_DIR=build
+    INSTALL_DIR=/opt/rmasanitizer
+    # Install RMASanitizer
+    tar -xf /MUST-v1.10.0-rmasanitizer.tar.gz && \
+    cd MUST-v1.10.0-rmasanitizer && \
+    mkdir -p ${BUILD_DIR}
+    cmake -G Ninja -S . -B ${BUILD_DIR} \
+    -DCMAKE_PREFIX_PATH='/usr/lib/llvm-16/;/usr/lib/;/usr/lib64/' \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_STACKTRACE=OFF \
+    -DUSE_BACKWARD=OFF \
+    -DENABLE_FORTRAN=OFF \
+    -DENABLE_OPENSHMEM=ON \
+    -DENABLE_GASPI=OFF \
+    -DENABLE_TYPEART=OFF \
+    -DCMAKE_INSTALL_PREFIX=${INSTALL_DIR}
+    cmake --build ${BUILD_DIR} -- -j$(nproc --all) install
+    cmake --build ${BUILD_DIR} -- -j$(nproc --all) install-prebuilds
+
+    # Clean up build dir
+    rm -rf ${BUILD_DIR}
+
+    # Set PATH variable
+    echo "export PATH=\"${INSTALL_DIR}/bin:\$PATH\"" >> $APPTAINER_ENVIRONMENT
+
+    # Clean up externals
+    rm -rf /externals

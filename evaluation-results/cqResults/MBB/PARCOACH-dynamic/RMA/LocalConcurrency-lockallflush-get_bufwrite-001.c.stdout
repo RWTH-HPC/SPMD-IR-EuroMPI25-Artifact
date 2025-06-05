@@ -1,0 +1,28 @@
+[n23m0302:1109740:0:1109740]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:1109740:1:1110344]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753970116.653064] [n23m0302:1109740:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753970116.653066] [n23m0302:1109740:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+==== backtrace (tid:1109740) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14ca35c4ae9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14ca35c48b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14ca35c48bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14ca35ccb038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14ca366a04eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14ca366a3f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14ca3666cc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14ca3666d146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14ca365e4a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14ca3665b5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14ca3665b7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14ca3665c181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14ca365050cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14ca38c04c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x14ca38c078ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufwrite-001.c-instrumented.exe(+0x140d) [0x5562181cd40d]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14ca3612b24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14ca3612b305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufwrite-001.c-instrumented.exe(+0x1131) [0x5562181cd131]
+=================================
+Error when inserting memory access of type LOCAL_WRITE from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufwrite-001.c:46 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/LocalConcurrency-lockallflush-get_bufwrite-001.c:44.
+The program will be exiting now with MPI_Abort.
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0

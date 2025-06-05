@@ -1,0 +1,57 @@
+[n23m0302:896878:0:896878]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:896878:1:897210]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969968.411995] [n23m0302:896878:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[n23m0302:896880:0:896880]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:896880:1:897211]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969968.411997] [n23m0302:896878:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969968.412018] [n23m0302:896880:0]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969968.412019] [n23m0302:896880:1]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid: 896878) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x154dbb28ce9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x154dbb28ab06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x154dbb28abf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x154dbb30d038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x154dbbce24eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x154dbbce5f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x154dbbcaec70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260a85) [0x154dbbcafa85]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1c9d57) [0x154dbbc18d57]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23d93b) [0x154dbbc8c93b]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23da13) [0x154dbbc8ca13]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23eab8) [0x154dbbc8dab8]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_fence+0x5df) [0x154dbbbf1f4f]
+13  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-rput_rget_accumulate-001.c-instrumented.exe(+0x14da) [0x565032b0a4da]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x154dbb76d24a]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x154dbb76d305]
+16  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-rput_rget_accumulate-001.c-instrumented.exe(+0x1141) [0x565032b0a141]
+=================================
+==== backtrace (tid: 896880) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x15466ac22e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x15466ac20b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x15466ac20bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x15466aca3038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x15466b6784eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x15466b67bf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x15466b644c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x15466b645146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1cad8b) [0x15466b5afd8b]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23e5d5) [0x15466b6235d5]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23e701) [0x15466b623701]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x23eb0c) [0x15466b623b0c]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_fence+0x5df) [0x15466b587f4f]
+13  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-rput_rget_accumulate-001.c-instrumented.exe(+0x14da) [0x55e1e4eee4da]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x15466b10324a]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x15466b103305]
+16  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-fence-rput_rget_accumulate-001.c-instrumented.exe(+0x1141) [0x55e1e4eee141]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 896880 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

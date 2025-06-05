@@ -1,0 +1,28 @@
+[n23m0302:481618:0:481928]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:481618:1:481618]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[1753969463.725943] [n23m0302:481618:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 8 was not set in ucs
+[1753969463.725944] [n23m0302:481618:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid: 481618) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x151c90206e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x151c90204b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x151c90204bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x151c90287038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x151c90c5c4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x151c90c5ff5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x151c90c28c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x151c90c29146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x151c90ba0a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x151c90c175d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x151c90c177ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x151c90c18181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x151c90ac10cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x151c931c0c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x151c931c2538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/006-MPI-static-get-load-retval-local-yes.c-instrumented.exe(+0x14dd) [0x56431675c4dd]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x151c906e724a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x151c906e7305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/006-MPI-static-get-load-retval-local-yes.c-instrumented.exe(+0x1131) [0x56431675c131]
+=================================
+Error when inserting memory access of type LOCAL_READ from file cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/006-MPI-static-get-load-retval-local-yes.c:51 with already inserted interval of type RMA_WRITE from file cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/static/006-MPI-static-get-load-retval-local-yes.c:49.
+The program will be exiting now with MPI_Abort.
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0

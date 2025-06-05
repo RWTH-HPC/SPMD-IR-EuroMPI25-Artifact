@@ -1,0 +1,49 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:14:5: warning: get operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+    shmem_int_get_nbi(localb_base, remote_base, 1, 1);
+    ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:41:9: note: called from
+        inefficient_get(0, localb_base, remote_base);
+        ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:14:5: note: see current operation: %error_5 = "spmd.get"(%address, %c1_i64, %2, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %2, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 1 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+    shmem_int_get_nbi(localb_base, remote_base, 1, 1);
+    ^
+
+
+Previous operation:
+
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:14:5: warning: get operation/call
+    shmem_int_get_nbi(localb_base, remote_base, 1, 1);
+    ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:41:9: note: called from
+        inefficient_get(0, localb_base, remote_base);
+        ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:14:5: note: see current operation: %error_5 = "spmd.get"(%address, %c1_i64, %2, %c1_i64, %c1_i32, %win, %c0_i64, %c1_i64, %2, %c1_i64) <{isAtomic = false, isBlocking = true, usedModel = 1 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> !spmd.error
+    shmem_int_get_nbi(localb_base, remote_base, 1, 1);
+    ^
+
+
+With the alias values:
+Causing Access on: %address
+Previous Access on: %address
+
+
+On the orignal value:
+Operand: %address
+
+
+Defined by:
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:35:31: warning: malloc
+    int* localb_base = (int*)(shmem_malloc(sizeof(int) * ARR_SIZE));
+                              ^
+cq-results-20250731-154348/RRB/SHMEM/SPMDIR/static/019-shmem-static-getnbi-getnbi-recursive-local-yes.c:35:31: note: see current operation: %address, %error_1 = "spmd.malloc"(%3, %c40_i64) <{usedModel = 1 : i32}> {spmd.executionKind = "All"} : (!spmd.comm, i64) -> (!llvm.ptr, !spmd.error)
+
+--------------------------------------------------------------------------------------------------------------
+
+
+

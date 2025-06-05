@@ -1,0 +1,47 @@
+[n23m0302:959273:0:959273]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:959273:1:959575]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:959272:0:959272]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:959272:1:959574]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 959272) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x15016e616e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x15016e614b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x15016e614bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x15016e697008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_flush_local_all+0x784) [0x15016ef7f4b4]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-rget_fetch_and_op-001.c-instrumented.exe(+0x13f5) [0x5644188d03f5]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x15016eaf724a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x15016eaf7305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-rget_fetch_and_op-001.c-instrumented.exe(+0x1161) [0x5644188d0161]
+=================================
+==== backtrace (tid: 959273) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x145e8ee1ae9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x145e8ee18b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x145e8ee18bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x145e8ee9b008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x145e8f8704eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x145e8f873f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x145e8f83cc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x145e8f83d146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x145e8f7b4a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x145e8f82b5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x145e8f82b7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x145e8f82c181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x145e8f6d50cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x145e91dd4c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x145e91dd78ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-rget_fetch_and_op-001.c-instrumented.exe(+0x14d9) [0x5627b693c4d9]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x145e8f2fb24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x145e8f2fb305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflushlocal-rget_fetch_and_op-001.c-instrumented.exe(+0x1161) [0x5627b693c161]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 959273 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

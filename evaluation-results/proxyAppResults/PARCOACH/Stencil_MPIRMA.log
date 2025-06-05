@@ -1,0 +1,89 @@
+rm -f stencil.o MPI_bail_out.o wtime.o  stencil *.optrpt *~ charmrun stats.json stencil.decl.h stencil.def.h *.bc *.mlir
+mpicc -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/includesProgramModels/mpi/include -I../../include -c stencil.c
+In file included from stencil.c:71:
+../../include/par-res-kern_general.h:190:12: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  cost_opt=INT_MAX;
+          ~^~~~~~~
+/usr/lib/llvm-15/lib/clang/15.0.6/include/limits.h:46:19: note: expanded from macro 'INT_MAX'
+#define INT_MAX   __INT_MAX__
+                  ^~~~~~~~~~~
+<built-in>:45:21: note: expanded from here
+#define __INT_MAX__ 2147483647
+                    ^~~~~~~~~~
+1 warning generated.
+mpicc -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/includesProgramModels/mpi/include -I../../include -c ../../common/MPI_bail_out.c
+In file included from ../../common/MPI_bail_out.c:50:
+../../include/par-res-kern_general.h:190:12: warning: implicit conversion from 'int' to 'float' changes value from 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+  cost_opt=INT_MAX;
+          ~^~~~~~~
+/usr/lib/llvm-15/lib/clang/15.0.6/include/limits.h:46:19: note: expanded from macro 'INT_MAX'
+#define INT_MAX   __INT_MAX__
+                  ^~~~~~~~~~~
+<built-in>:45:21: note: expanded from here
+#define __INT_MAX__ 2147483647
+                    ^~~~~~~~~~
+1 warning generated.
+mpicc -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/includesProgramModels/mpi/include -I../../include -c ../../common/wtime.c
+llvm-link -o stencil.bc   stencil.o MPI_bail_out.o wtime.o  
+===========================
+===  PARCOACH ANALYSIS  ===
+===========================
+===========================
+ANALYZING function main...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...LocalConcurrency detected: conflit with the following instructions: 
+  store double %469, ptr %471, align 8, !dbg !714, !tbaa !545 - LINE 353 in stencil.c
+AND
+  %450 = call i32 @MPI_Put(ptr noundef %448, i32 noundef %300, ptr noundef nonnull @ompi_mpi_double, i32 noundef %85, i64 noundef %307, i32 noundef %300, ptr noundef nonnull @ompi_mpi_double, ptr noundef %449) #10, !dbg !700 - LINE 348 in stencil.c
+LocalConcurrency detected: conflit with the following instructions: 
+  store double %603, ptr %605, align 8, !dbg !817, !tbaa !545 - LINE 381 in stencil.c
+AND
+  %583 = call i32 @MPI_Put(ptr noundef %581, i32 noundef %320, ptr noundef nonnull @ompi_mpi_double, i32 noundef %83, i64 noundef %327, i32 noundef %320, ptr noundef nonnull @ompi_mpi_double, ptr noundef %582) #10, !dbg !802 - LINE 376 in stencil.c
+done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+22 MPI functions including 10 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 2 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 4 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 4 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 3 (/74) LOAD and 0 (/35) STORE are instrumented
+===========================
+ANALYZING function PRK_Win_free...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+8 MPI functions including 1 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 1 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/7) LOAD and 0 (/2) STORE are instrumented
+===========================
+ANALYZING function bail_out...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+2 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/1) LOAD and 0 (/1) STORE are instrumented
+===========================
+ANALYZING function wtime...
+(1) Get statistics ...done 
+(2) Local concurrency errors detection ...done 
+(3) Instrumentation for dynamic analysis ...done 
+=== STATISTICS === 
+1 MPI functions including 0 RMA functions 
+= WINDOW CREATION/DESTRUCTION: 0 MPI_Win_free, 0 MPI_Win_create 
+= EPOCH CREATION/DESTRUCTION: 0 MPI_Win_fence, 0 MPI_Lock, 0 MPI_Lockall 0 MPI_Unlock, 0 MPI_Unlockall 
+= ONE-SIDED COMMUNICATIONS: 0 MPI_Get, 0 MPI_Put, 0 MPI_Accumulate 
+= SYNCHRONIZATION: 0 MPI_Win_Flush 
+LOAD/STORE STATISTICS: 0 (/0) LOAD and 0 (/0) STORE are instrumented
+===========================
+Command (parcoach --check=rma stencil.bc) took time (us): 71686
+Command (make stencil MPICC=mpicc CLINKER=llvm-link LINKFLAGS= LIBS= SPMDVERIFY=@time-wrapper parcoach SPMDFLAGS=--check=rma) took time (us): 2236508

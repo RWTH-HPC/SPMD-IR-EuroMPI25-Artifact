@@ -1,0 +1,36 @@
+[n23m0302:900641:0:900641]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:900641:1:900970]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969970.907079] [n23m0302:900641:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+[1753969970.907082] [n23m0302:900641:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 1 was not set in ucs
+==== backtrace (tid: 900641) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x153f144b3e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x153f144b1b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x153f144b1bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x153f14534038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x153f14f094eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x153f14f0cf5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x153f14ed5c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x153f14ed6146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x153f14e4da2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x153f14ec45d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x153f14ec47ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x153f14ec5181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x153f14d6e0cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x153f1746dc5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_unlock_all+0xf) [0x153f174708ef]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-rput_fetch_and_op-001.c-instrumented.exe(+0x14a7) [0x5590af6fb4a7]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x153f1499424a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x153f14994305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/MBB/PARCOACH-dynamic/RMA/Correct-lockallflush-rput_fetch_and_op-001.c-instrumented.exe(+0x1151) [0x5590af6fb151]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 900641 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

@@ -1,0 +1,55 @@
+[n23m0302:489433:0:489433]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:489433:1:489529]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:489432:0:489432]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:489432:1:489530]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+==== backtrace (tid: 489433) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1526f35f6e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1526f35f4b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1526f35f4bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x1526f3677038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x1526f404c4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x1526f404ff5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x1526f4018c70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260a85) [0x1526f4019a85]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1c320f) [0x1526f3f7c20f]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x251027) [0x1526f400a027]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25118f) [0x1526f400a18f]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2518b6) [0x1526f400a8b6]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Allreduce+0x2d5) [0x1526f3e5cb45]
+13  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/010-MPI-coll-put-allreduce-local-no.c-instrumented.exe(+0x13f4) [0x55ce5714c3f4]
+14  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x1526f3ad724a]
+15  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x1526f3ad7305]
+16  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/010-MPI-coll-put-allreduce-local-no.c-instrumented.exe(+0x1141) [0x55ce5714c141]
+==== backtrace (tid: 489432) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x15420b0e8e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x15420b0e6b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x15420b0e6bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x15420b169038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x15420bb3e4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x15420bb41f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x15420bb0ac70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x15420bb0b146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x15420ba82a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x15420baf95d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x15420baf97ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x15420bafa181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x15420b9a30cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x15420e0a2c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x15420e0a4538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/010-MPI-coll-put-allreduce-local-no.c-instrumented.exe(+0x1424) [0x561b78547424]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x15420b5c924a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x15420b5c9305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/rma+nonrma/010-MPI-coll-put-allreduce-local-no.c-instrumented.exe(+0x1141) [0x561b78547141]
+=================================
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 489433 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

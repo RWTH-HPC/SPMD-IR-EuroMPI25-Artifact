@@ -1,0 +1,55 @@
+[1753969460.404387] [n23m0302:477391:0]       uct_iface.c:92   UCX  WARN  got active message id 0, but no handler installed
+[1753969460.404408] [n23m0302:477391:0]       uct_iface.c:93   UCX  WARN  payload 0 of 0 bytes:
+[n23m0302:477390:0:477458] rc_mlx5_iface.c:133  Assertion `uct_rc_txqp_available(txqp) <= txwq->bb_max' failed
+[n23m0302:477390:1:477390]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[1753969460.406412] [n23m0302:477390:1]           debug.c:1292 UCX  WARN  ucs_debug_disable_signal: signal 7 was not set in ucs
+[1753969460.406413] [n23m0302:477390:0]        spinlock.c:29   UCX  WARN  ucs_recursive_spinlock_destroy() failed: busy
+==== backtrace (tid: 477390) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x147c2f49ce9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x147c2f49ab06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x147c2f49abf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x188) [0x147c2f51d008]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Win_flush_local_all+0x81a) [0x147c2fe0554a]
+ 5  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/008-MPI-sync-lockall-flushlocalall-local-no.c-instrumented.exe(+0x1419) [0x55e62ee73419]
+ 6  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x147c2f97d24a]
+ 7  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x147c2f97d305]
+ 8  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/sync/008-MPI-sync-lockall-flushlocalall-local-no.c-instrumented.exe(+0x1151) [0x55e62ee73151]
+=================================
+[1753969460.408385] [n23m0302:477391:0]             log.c:561  UCX  WARN  ==== backtrace (tid: 477457) ====
+[1753969460.408395] [n23m0302:477391:0]             log.c:564  UCX  WARN   0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_log_print_backtrace+0x2f) [0x153913241f9f]
+[1753969460.408397] [n23m0302:477391:0]             log.c:564  UCX  WARN   1  /lib/x86_64-linux-gnu/libuct.so.0(+0x143db) [0x1539131bb3db]
+[1753969460.408399] [n23m0302:477391:0]             log.c:564  UCX  WARN   2  /lib/x86_64-linux-gnu/libuct.so.0(+0x186ce) [0x1539131bf6ce]
+[1753969460.408400] [n23m0302:477391:0]             log.c:564  UCX  WARN   3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x72) [0x1539132bfef2]
+[1753969460.408401] [n23m0302:477391:0]             log.c:564  UCX  WARN   4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x153913c96596]
+[1753969460.408402] [n23m0302:477391:0]             log.c:564  UCX  WARN   5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x153913c96880]
+[1753969460.408403] [n23m0302:477391:0]             log.c:564  UCX  WARN   6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x153913b7637a]
+[1753969460.408404] [n23m0302:477391:0]             log.c:564  UCX  WARN   7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x1539161f9702]
+[1753969460.408405] [n23m0302:477391:0]             log.c:564  UCX  WARN   8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x1539135b34a3]
+[1753969460.408406] [n23m0302:477391:0]             log.c:564  UCX  WARN   9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x1539137821f5]
+[1753969460.408407] [n23m0302:477391:0]             log.c:564  UCX  WARN  10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x15391380289c]
+[1753969460.408408] [n23m0302:477391:0]             log.c:566  UCX  WARN  =================================
+[n23m0302:477391:0:477457]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 477457) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x15391323fe9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x15391323db06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x15391323dbf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x1539132c0038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x153913c96596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x153913c96880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x153913b7637a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x1539161f9702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x1539135b34a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x1539137821f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x15391380289c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 477390 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 1
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Hangup (signal 1)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

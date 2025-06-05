@@ -1,0 +1,50 @@
+[n23m0302:486807:0:486807]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+[n23m0302:486807:1:486882]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:486807:2:486885]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:486806:0:486884]  ucp_worker.c:2781 Assertion `worker->inprogress++ == 0' failed
+[n23m0302:486806:1:486883]  ucp_worker.c:2786 Assertion `--worker->inprogress == 0' failed
+==== backtrace (tid: 486807) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x14b811a89e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x14b811a87b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x14b811a87bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x14b811b0a038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x2934eb) [0x14b8124df4eb]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x296f5e) [0x14b8124e2f5e]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(+0x25fc70) [0x14b8124abc70]
+ 7  /lib/x86_64-linux-gnu/libmpich.so.12(+0x260146) [0x14b8124ac146]
+ 8  /lib/x86_64-linux-gnu/libmpich.so.12(+0x1d7a2c) [0x14b812423a2c]
+ 9  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e5d4) [0x14b81249a5d4]
+10  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24e7ad) [0x14b81249a7ad]
+11  /lib/x86_64-linux-gnu/libmpich.so.12(+0x24f181) [0x14b81249b181]
+12  /lib/x86_64-linux-gnu/libmpich.so.12(MPI_Reduce+0x28c) [0x14b8123440cc]
+13  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(rma_analyzer_clear_comm_check_thread+0xff) [0x14b814a43c5f]
+14  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(parcoach_rma_MPI_Win_fence+0x28) [0x14b814a45538]
+15  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/dynamic/008-MPI-dynamic-win-in-array-local-no.c-instrumented.exe(+0x1649) [0x55c72b479649]
+16  /lib/x86_64-linux-gnu/libc.so.6(+0x2724a) [0x14b811f6a24a]
+17  /lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85) [0x14b811f6a305]
+18  /rwthfs/rz/cluster/work/rwth1282/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250731-154348/RRB/MPIRMA/PARCOACH-dynamic/dynamic/008-MPI-dynamic-win-in-array-local-no.c-instrumented.exe(+0x1101) [0x55c72b479101]
+=================================
+==== backtrace (tid: 486883) ====
+ 0  /lib/x86_64-linux-gnu/libucs.so.0(ucs_handle_error+0x2dc) [0x1490ad6c8e9c]
+ 1  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_message+0xb6) [0x1490ad6c6b06]
+ 2  /lib/x86_64-linux-gnu/libucs.so.0(ucs_fatal_error_format+0xe1) [0x1490ad6c6bf1]
+ 3  /lib/x86_64-linux-gnu/libucp.so.0(ucp_worker_progress+0x1b8) [0x1490ad749038]
+ 4  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294596) [0x1490ae11f596]
+ 5  /lib/x86_64-linux-gnu/libmpich.so.12(+0x294880) [0x1490ae11f880]
+ 6  /lib/x86_64-linux-gnu/libmpich.so.12(PMPI_Test+0x22a) [0x1490adfff37a]
+ 7  /opt/parcoach/lib/libParcoachRMADynamic_MPI_C.so(+0x5702) [0x1490b0682702]
+ 8  /lib/x86_64-linux-gnu/libstdc++.so.6(+0xd44a3) [0x1490ada3c4a3]
+ 9  /lib/x86_64-linux-gnu/libc.so.6(+0x891f5) [0x1490adc0b1f5]
+10  /lib/x86_64-linux-gnu/libc.so.6(+0x10989c) [0x1490adc8b89c]
+=================================
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 486807 RUNNING AT n23m0302.hpc.itc.rwth-aachen.de
+=   EXIT CODE: 6
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Aborted (signal 6)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions

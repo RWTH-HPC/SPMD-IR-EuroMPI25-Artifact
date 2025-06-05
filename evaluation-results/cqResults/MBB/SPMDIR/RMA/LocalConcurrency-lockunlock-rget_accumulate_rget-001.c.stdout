@@ -1,0 +1,39 @@
+
+
+--------------------------------------------------------------------------------------------------------------
+Static Verification of Data Races:
+--------------------------------------------------------------------------------------------------------------
+
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockunlock-rget_accumulate_rget-001.c:52:24: warning: get operation/call may access the same memory as the previous operation without proper synch. (Data Race)
+    /*MBBERROR_BEGIN*/ MPI_Rget(buf, 10, MPI_INT, 1, 10, 10, MPI_INT, mpi_win_0,
+                       ^
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockunlock-rget_accumulate_rget-001.c:52:24: note: see current operation: %req_4, %error_5 = "spmd.get"(%21, %c10_i64, %4, %c1_i64, %c1_i32, %win, %c10_i64, %c10_i64, %4, %c1_i64) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64) -> (!spmd.req, !spmd.error)
+
+
+Previous operation:
+
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockunlock-rget_accumulate_rget-001.c:49:24: warning: getAccumulate operation/call
+    /*MBBERROR_BEGIN*/ MPI_Rget_accumulate(
+                       ^
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockunlock-rget_accumulate_rget-001.c:49:24: note: see current operation: %req, %error_3 = "spmd.getAccumulate"(%21, %c10_i64, %4, %c1_i64, %22, %c10_i64, %4, %c1_i64, %c1_i32, %win, %c0_i64, %c10_i64, %4, %c1_i64, %5) <{isAtomic = true, isBlocking = false, usedModel = 0 : i32}> {spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static"} : (!llvm.ptr, i64, !spmd.datatype, i64, !llvm.ptr, i64, !spmd.datatype, i64, i32, !spmd.win, i64, i64, !spmd.datatype, i64, !spmd.op) -> (!spmd.req, !spmd.error)
+
+
+With the alias values:
+Causing Access on: %21
+Previous Access on: %21
+
+
+On the orignal value:
+Operand: %21
+
+
+Defined by:
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockunlock-rget_accumulate_rget-001.c:45:23: warning: call
+    int *buf = (int *)calloc(10, sizeof(int));
+                      ^
+cq-results-20250731-154348/MBB/SPMDIR/RMA/LocalConcurrency-lockunlock-rget_accumulate_rget-001.c:45:23: note: see current operation: %21 = llvm.call @calloc(%c10_i64, %c4_i64) {memory_effects = #llvm.memory_effects<other = none, argMem = none, inaccessibleMem = readwrite>, no_unwind, spmd.executedBy = array<i32: 0>, spmd.executionKind = "Static", will_return} : (i64, i64) -> !llvm.ptr
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
