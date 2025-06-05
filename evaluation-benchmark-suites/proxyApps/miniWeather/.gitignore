@@ -1,0 +1,4 @@
+c/build/CMake*
+c/CMake*
+c/*.cmake
+c/Makefile

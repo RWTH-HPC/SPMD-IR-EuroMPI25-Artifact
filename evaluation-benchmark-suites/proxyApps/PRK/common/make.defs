@@ -1,0 +1,29 @@
+#
+# This file shows the LLVM toolchain options for PRKs using
+# OpenMP, MPI and/or Fortran coarrays only.
+#
+# Base compilers and language options
+#
+
+#
+# Compiler flags
+#
+DEFAULT_OPT_FLAGS=-O1 -flto -fno-exceptions -g
+LINKFLAGS=-fuse-ld=lld -Wl,--lto-emit-llvm
+
+#
+# MPI-3
+#
+MPIDIR=${SPMDIR_BUILD}
+MPICC=${MPIDIR}/bin/clang
+MPICXX=${MPIDIR}/bin/clang++
+MPIINC=-I${MPIDIR}/includesProgramModels/mpi/include
+
+
+SHMEMCC=${MPICC}
+SHMEMCXX=${MPICXX}
+SHMEMINC=-I${SPMDIR_BUILD}/includesProgramModels/shmem/include
+
+
+SPMDVERIFY=${SPMDIR_BUILD}/bin/spmd-verify
+SPMDFLAGS=check-dataRace emitSPMDIR time
