@@ -91,7 +91,6 @@ int main(int argc, char **argv) {
     // Free NVSHMEM symmetric memory
     nvshmem_free(remote_d);
     nvshmem_free(localbuf_d);
-    nvshmem_free(flag_d);
 
     // Finalize NVSHMEM
     nvshmem_finalize();
