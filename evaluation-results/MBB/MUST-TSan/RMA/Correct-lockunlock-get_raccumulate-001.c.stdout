@@ -1,0 +1,48 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.DhJPF5alQt"!
+[MUST] Using prebuilt infrastructure at /home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Executing application:
+rank 0 (of 2), pid 3142874 caught MPI error nr 47
+MPI_ERR_RMA_SYNC: error executing rma sync
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/RMA/Correct-lockunlock-get_raccumulate-001.c.exe-must(backtrace+0xda)[0x5602c7aefa7a]
+/opt/must/modules//libcProtMpiSplitComm.so(+0xe338)[0x7efc49234338]
+/opt/must/modules//libcProtMpiSplitComm.so(+0xfb4a)[0x7efc49235b4a]
+/opt/must/modules//libcProtMpiSplitComm.so(+0xfa28)[0x7efc49235a28]
+/lib/x86_64-linux-gnu/libmpi.so.40(ompi_errhandler_invoke+0x93)[0x7efc4ae11f93]
+/lib/x86_64-linux-gnu/libmpi.so.40(PMPI_Raccumulate+0xbb)[0x7efc4ae5a81b]
+/opt/must/modules//libMpiHandleShim.so(MPI_Raccumulate+0x2b)[0x7efc42143aeb]
+/opt/must/lib/libpnmpi.so(NQJ_Raccumulate+0x17f)[0x7efc4af7ca0f]
+/opt/must/lib/libpnmpi.so(XMPI_Raccumulate+0x61)[0x7efc4afa69c1]
+/home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2/modules//libweaver-wrapp-gen-output-0.so(MPI_Raccumulate+0x28f)[0x7efc48bc757f]
+/opt/must/lib/libpnmpi.so(NQJ_Raccumulate+0x17f)[0x7efc4af7ca0f]
+/opt/must/lib/libpnmpi.so(MPI_Raccumulate+0x185)[0x7efc4af990a5]
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/RMA/Correct-lockunlock-get_raccumulate-001.c.exe-must(+0xd4fc0)[0x5602c7b53fc0]
+/lib/x86_64-linux-gnu/libc.so.6(+0x2724a)[0x7efc4a9df24a]
+/lib/x86_64-linux-gnu/libc.so.6(__libc_start_main+0x85)[0x7efc4a9df305]
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/RMA/Correct-lockunlock-get_raccumulate-001.c.exe-must(+0x213c1)[0x5602c7aa03c1]
+Waiting up to 30 seconds for analyses to be finished.
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 1 in communicator MPI_COMM_WORLD
+with errorcode 143.
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+rank -1 (of -1), pid 3142876 caught signal nr 15
+rank 1 (of 2), pid 3142875 caught signal nr 15
+--------------------------------------------------------------------------
+mpiexec noticed that process rank 0 with PID 0 on node n23m0165 exited on signal 11 (Segmentation fault).
+--------------------------------------------------------------------------
+[n23m0165.hpc.itc.rwth-aachen.de:3142870] 1 more process has sent help message help-mpi-api.txt / mpi-abort
+[n23m0165.hpc.itc.rwth-aachen.de:3142870] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+[MUST] Execution finished.

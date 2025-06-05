@@ -1,0 +1,13 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.yn9Sh0KyAE"!
+[MUST] Using prebuilt infrastructure at /home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Executing application:
+[MUST-REPORT] MUST detected no MPI usage errors nor any suspicious behavior during this application run.
+Rank 0 finished normally
+Rank 1 finished normally
+[MUST] Execution finished.

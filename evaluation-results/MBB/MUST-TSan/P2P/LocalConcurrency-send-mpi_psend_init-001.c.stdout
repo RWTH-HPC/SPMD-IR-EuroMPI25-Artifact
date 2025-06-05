@@ -1,0 +1,21 @@
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_psend_init-001.c:37:5: error: call to undeclared function 'MPI_Precv_init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    MPI_Precv_init(buf, 1, 10, MPI_INT, 1, 0, MPI_COMM_WORLD, MPI_INFO_NULL,
+    ^
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_psend_init-001.c:37:5: note: did you mean 'MPI_Recv_init'?
+/usr/lib/x86_64-linux-gnu/openmpi/include/mpi.h:1721:20: note: 'MPI_Recv_init' declared here
+OMPI_DECLSPEC  int MPI_Recv_init(void *buf, int count, MPI_Datatype datatype, int source,
+                   ^
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_psend_init-001.c:43:24: error: call to undeclared function 'MPI_Psend_init'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    /*MBBERROR_BEGIN*/ MPI_Psend_init(buf, 1, 10, MPI_INT, 0, 0, MPI_COMM_WORLD,
+                       ^
+/rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/P2P/LocalConcurrency-send-mpi_psend_init-001.c:47:5: error: call to undeclared function 'MPI_Pready'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+    MPI_Pready(0, mpi_request_0);
+    ^
+3 errors generated.
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.WCYNumZ1pR"!
+[MUST] Using prebuilt infrastructure at /home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2" is present and used.
+[MUST-ERROR] Missing program to execute (parameter COMMAND, see '/opt/must/bin/mustrun --help' for more information)

@@ -1,0 +1,10 @@
+--------------------------------------------------------------------------
+mpirun was unable to launch the specified application as it could not access
+or execute an executable:
+
+Executable: /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/PARCOACH-dynamic/P2P/LocalConcurrency-send-mpi_psend_init-001.c-instrumented.exe
+Node: n23m0165
+
+while attempting to start process rank 0.
+--------------------------------------------------------------------------
+2 total processes failed to start

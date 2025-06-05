@@ -1,0 +1,55 @@
+[MUST] MUST configuration ... distributed checks without application crash handling
+[MUST] Information: overwritting old intermediate data in directory "/tmp/tmp.hOfhHq25kJ"!
+[MUST] Using prebuilt infrastructure at /home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2
+[MUST] Weaver ... success
+[MUST] Generating P^nMPI configuration ... success
+[MUST] Infrastructure in "/home/ss540294/.cache/must/prebuilds/22eb24d833e5490af8c72438c2b7cbf2" is present and used.
+[MUST] Search for linked P^nMPI ... not found ... using LD_PRELOAD to load P^nMPI ... success
+[MUST] Note: Full ThreadSanitizer support requires the application to be built with either a GNU-based compiler in version 9 to 11 or an LLVM-based compiler in version 6 to 13.
+[MUST] Executing application:
+==================
+[1m[31mWARNING: ThreadSanitizer: data race (pid=3179658)
+[1m[0m[1m[34m  Write of size 4 at 0x7b1400017f78 by main thread:
+[1m[0m    #0 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:40:29 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3ec1) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+==================
+[1m[31mWARNING: ThreadSanitizer: data race (pid=3179659)
+[1m[0m[1m[34m  Write of size 4 at 0x7b1400017f78 by main thread:
+[1m[0m
+[1m[34m  Previous read of size 8 at 0x7b1400017f78 by thread T4:
+[1m[0m    #0 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:40:29 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3ec1) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+[1m[34m  Previous read of size 8 at 0x7b1400017f78 by thread T4:
+[1m[0m    #0 MPI_Ialltoall <null> (libpnmpi.so+0x7b8e0) (BuildId: 86549867a3a57804dc15c44d2a3e3ff765a48fc9)
+    #0 MPI_Ialltoall <null> (libpnmpi.so+0x7b8e0) (BuildId: 86549867a3a57804dc15c44d2a3e3ff765a48fc9)
+    #1 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:38:22 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3eb0) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+[1m[32m  Location is heap block of size 80 at 0x7b1400017f70 allocated by main thread:
+[1m[0m    #1 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:38:22 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3eb0) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+[1m[32m  Location is heap block of size 80 at 0x7b1400017f70 allocated by main thread:
+[1m[0m    #0 calloc <null> (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0x4bc76) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+    #0 calloc <null> (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0x4bc76) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+    #1 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:34:21 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3e5a) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+[1m[36m  Thread T4 'Request from call MPI_Ialltoall' (tid=0, running) created by main thread at:
+[1m[0m    #1 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:34:21 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3e5a) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+[1m[36m  Thread T4 'Request from call MPI_Ialltoall' (tid=0, running) created by main thread at:
+[1m[0m    #0 must::MpiTSanAnnotations::makeBlocksActive(unsigned long, unsigned long, must::MustMemIntervalListType const&, long) <null> (libmpiTSanAnnotations.so+0x160ba) (BuildId: db64e8fd0d955830e2ec2559403c98f76aeb57c5)
+    #0 must::MpiTSanAnnotations::makeBlocksActive(unsigned long, unsigned long, must::MustMemIntervalListType const&, long) <null> (libmpiTSanAnnotations.so+0x160ba) (BuildId: db64e8fd0d955830e2ec2559403c98f76aeb57c5)
+    #1 MPI_Ialltoall <null> (libpnmpi.so+0x7b8e0) (BuildId: 86549867a3a57804dc15c44d2a3e3ff765a48fc9)
+    #1 MPI_Ialltoall <null> (libpnmpi.so+0x7b8e0) (BuildId: 86549867a3a57804dc15c44d2a3e3ff765a48fc9)
+    #2 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:38:22 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3eb0) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+    #2 main /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:38:22 (LocalConcurrency-mpi_ialltoall-001.c.exe-must+0xd3eb0) (BuildId: bb1b6f583a41187b6baea270e6326055f269e949)
+
+SUMMARY: ThreadSanitizer: data race /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:40:29 in main
+==================
+SUMMARY: ThreadSanitizer: data race /rwthfs/rz/cluster/home/ss540294/spmdir/spmd/externals/data-race-detection-benchmark-suite/cq-results-20250604-173113/MBB/MUST-TSan/COLL/LocalConcurrency-mpi_ialltoall-001.c:40:29 in main
+==================
+[MUST-REPORT] MUST detected no MPI usage errors nor any suspicious behavior during this application run.
+Rank 1 finished normally
+Rank 0 finished normally
+ThreadSanitizer: reported 1 warnings
+ThreadSanitizer: reported 1 warnings
+[MUST] Execution finished.

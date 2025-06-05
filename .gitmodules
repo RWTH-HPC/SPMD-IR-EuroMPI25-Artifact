@@ -1,0 +1,4 @@
+[submodule "llvm-project"]
+	path = llvm-project
+	url = https://github.com/burakSemih/llvm-project.git
+	branch = dev-semih-rebase-main
