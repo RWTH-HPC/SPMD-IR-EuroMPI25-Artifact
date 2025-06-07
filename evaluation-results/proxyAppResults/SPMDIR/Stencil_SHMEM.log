@@ -115,34 +115,35 @@ stencil.c:339:23: note: called from
 ===-------------------------------------------------------------------------===
                          ... Execution time report ...
 ===-------------------------------------------------------------------------===
-  Total Execution Time: 0.1605 seconds
+  Total Execution Time: 0.1599 seconds
 
   ----Wall Time----  ----Name----
-    0.0222 ( 13.9%)  Parser
-    0.0030 (  1.9%)  PrepareLLVMFuncInline
-    0.0059 (  3.7%)  Inliner
+    0.0212 ( 13.3%)  Parser
+    0.0025 (  1.6%)  PrepareLLVMFuncInline
+    0.0061 (  3.8%)  Inliner
     0.0001 (  0.0%)    (A) CallGraph
     0.0028 (  1.7%)  'llvm.func' Pipeline
     0.0028 (  1.7%)    Canonicalizer
-    0.0013 (  0.8%)  CSE
+    0.0014 (  0.9%)  CSE
     0.0000 (  0.0%)    (A) DominanceInfo
-    0.0012 (  0.7%)  Mem2Reg
+    0.0012 (  0.8%)  Mem2Reg
     0.0000 (  0.0%)    (A) DataLayoutAnalysis
-    0.0017 (  1.1%)  Canonicalizer
-    0.0008 (  0.5%)  InlineGPULaunchFuncs
-    0.0117 (  7.3%)  DeleteInlinedFuncs
-    0.0027 (  1.7%)  HandleLLVMUnreachable
-    0.0017 (  1.1%)  Canonicalizer
-    0.0056 (  3.5%)  LiftControlFlowToSCFPass
+    0.0018 (  1.1%)  Canonicalizer
+    0.0006 (  0.4%)  InlineGPULaunchFuncs
+    0.0114 (  7.2%)  DeleteInlinedFuncs
+    0.0026 (  1.6%)  HandleLLVMUnreachable
+    0.0018 (  1.1%)  Canonicalizer
+    0.0053 (  3.3%)  LiftControlFlowToSCFPass
     0.0000 (  0.0%)    (A) DominanceInfo
-    0.0094 (  5.9%)  Canonicalizer
+    0.0093 (  5.8%)  Canonicalizer
     0.0085 (  5.3%)  PromoteScfWhilePass
-    0.0029 (  1.8%)  Canonicalizer
-    0.0092 (  5.7%)  ConvertApiCallsToSPMD
-    0.0026 (  1.6%)  SimplifyCmpOps
-    0.0428 ( 26.7%)  MultiValueAnalysis
+    0.0031 (  1.9%)  Canonicalizer
+    0.0090 (  5.6%)  ConvertApiCallsToSPMD
+    0.0030 (  1.9%)  SimplifyCmpOps
+    0.0430 ( 26.9%)  MultiValueAnalysis
     0.0000 (  0.0%)    (A) AliasAnalysis
-    0.0175 ( 10.9%)  CheckDataRace
-    0.0068 (  4.2%)  Rest
-    0.1605 (100.0%)  Total
+    0.0180 ( 11.3%)  CheckDataRace
+    0.0071 (  4.4%)  Rest
+    0.1599 (100.0%)  Total
 make: *** [../../common/make.common:17: stencil] Error 1
+Command (make stencil) took time (us): 2032280

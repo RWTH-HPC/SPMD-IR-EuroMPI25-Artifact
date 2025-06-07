@@ -25,7 +25,6 @@ In file included from ../../common/MPI_bail_out.c:50:
 1 warning generated.
 mpicc -O1 -flto -fno-exceptions -g  -DMPI -DRESTRICT_KEYWORD=0 -DVERBOSE=0 -DLOOPGEN=0 -DDOUBLE=1   -DRADIUS=2 -DSTAR=1  -I/includesProgramModels/mpi/include -I../../include -c ../../common/wtime.c
 llvm-link -o stencil.bc   stencil.o MPI_bail_out.o wtime.o  
-parcoach --check=rma stencil.bc
 ===========================
 ===  PARCOACH ANALYSIS  ===
 ===========================
@@ -86,3 +85,5 @@ ANALYZING function wtime...
 = SYNCHRONIZATION: 0 MPI_Win_Flush 
 LOAD/STORE STATISTICS: 0 (/0) LOAD and 0 (/0) STORE are instrumented
 ===========================
+Command (parcoach --check=rma stencil.bc) took time (us): 71686
+Command (make stencil MPICC=mpicc CLINKER=llvm-link LINKFLAGS= LIBS= SPMDVERIFY=@time-wrapper parcoach SPMDFLAGS=--check=rma) took time (us): 2236508

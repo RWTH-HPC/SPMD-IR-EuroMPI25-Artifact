@@ -24,34 +24,35 @@ No Data Race Found
 ===-------------------------------------------------------------------------===
                          ... Execution time report ...
 ===-------------------------------------------------------------------------===
-  Total Execution Time: 3.0914 seconds
+  Total Execution Time: 3.2246 seconds
 
   ----Wall Time----  ----Name----
-    0.0277 (  0.9%)  Parser
-    0.0067 (  0.2%)  PrepareLLVMFuncInline
-    0.0286 (  0.9%)  Inliner
+    0.0262 (  0.8%)  Parser
+    0.0062 (  0.2%)  PrepareLLVMFuncInline
+    0.0291 (  0.9%)  Inliner
     0.0002 (  0.0%)    (A) CallGraph
-    0.0131 (  0.4%)  'llvm.func' Pipeline
-    0.0130 (  0.4%)    Canonicalizer
-    0.0080 (  0.3%)  CSE
+    0.0133 (  0.4%)  'llvm.func' Pipeline
+    0.0133 (  0.4%)    Canonicalizer
+    0.0081 (  0.2%)  CSE
     0.0000 (  0.0%)    (A) DominanceInfo
-    0.0016 (  0.1%)  Mem2Reg
+    0.0017 (  0.1%)  Mem2Reg
     0.0001 (  0.0%)    (A) DataLayoutAnalysis
-    0.0117 (  0.4%)  Canonicalizer
-    0.0024 (  0.1%)  InlineGPULaunchFuncs
-    0.1250 (  4.0%)  DeleteInlinedFuncs
-    0.0094 (  0.3%)  HandleLLVMUnreachable
-    0.0058 (  0.2%)  Canonicalizer
-    0.0076 (  0.2%)  LiftControlFlowToSCFPass
+    0.0115 (  0.4%)  Canonicalizer
+    0.0022 (  0.1%)  InlineGPULaunchFuncs
+    0.1259 (  3.9%)  DeleteInlinedFuncs
+    0.0093 (  0.3%)  HandleLLVMUnreachable
+    0.0059 (  0.2%)  Canonicalizer
+    0.0080 (  0.2%)  LiftControlFlowToSCFPass
     0.0000 (  0.0%)    (A) DominanceInfo
-    0.0240 (  0.8%)  Canonicalizer
-    0.0261 (  0.8%)  PromoteScfWhilePass
-    0.0081 (  0.3%)  Canonicalizer
-    0.0232 (  0.7%)  ConvertApiCallsToSPMD
-    0.0078 (  0.3%)  SimplifyCmpOps
-    2.7236 ( 88.1%)  MultiValueAnalysis
+    0.0238 (  0.7%)  Canonicalizer
+    0.0250 (  0.8%)  PromoteScfWhilePass
+    0.0078 (  0.2%)  Canonicalizer
+    0.0231 (  0.7%)  ConvertApiCallsToSPMD
+    0.0080 (  0.2%)  SimplifyCmpOps
+    2.8458 ( 88.3%)  MultiValueAnalysis
     0.0000 (  0.0%)    (A) AliasAnalysis
-    0.0215 (  0.7%)  CheckDataRace
-    0.0112 (  0.4%)  Output
-   -0.0015 ( -0.0%)  Rest
-    3.0914 (100.0%)  Total
+    0.0338 (  1.0%)  CheckDataRace
+    0.0111 (  0.3%)  Output
+   -0.0013 ( -0.0%)  Rest
+    3.2246 (100.0%)  Total
+Command (sh cmake_claix_llvm_cpu.sh) took time (us): 9098008
